@@ -1,4 +1,4 @@
-from .mongo import DB
+from mongo import DB
 
 mongo = DB("test")
 
