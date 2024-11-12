@@ -1,10 +1,7 @@
-import json
 import matplotlib.pyplot as plt
 import matplotlib.animation as animation
-import numpy as np
 from datetime import datetime, timedelta
-from gps_data_preprocessing import get_gps_data_sorted_by_id
-from IPython.display import HTML
+from analyze_data.gps_data_preprocessing import get_gps_data_sorted_by_id
 
 
 def visualize_gps_by_id(id, time_window_minutes=15, save_gif=True, save_mp4=True):
