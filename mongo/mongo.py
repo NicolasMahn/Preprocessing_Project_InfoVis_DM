@@ -1,7 +1,7 @@
 from pymongo import MongoClient, collection
 from urllib.parse import quote_plus
 
-import secrets  # Assuming your credentials are stored in a secrets module
+import scrt  # Assuming your credentials are stored in a secrets module
 
 
 class DB:
