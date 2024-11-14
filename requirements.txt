@@ -1,1 +1,5 @@
 pymongo
+matplotlib
+contextily
+geopandas
+numpy
