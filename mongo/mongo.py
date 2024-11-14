@@ -43,15 +43,39 @@ class DB:
     def insert_one_if_not_exists(self, document: dict, unique_field: str) -> str:
 
         # Define the query to check if a document with the unique field already exists
-        query = {unique_field: document[unique_field]}
+        query = {unique_field: str(document[unique_field])}
 
         # Use upsert=True to insert the document if it doesn't exist
         result = self.collection.update_one(query, {"$setOnInsert": document}, upsert=True)
 
         if result.upserted_id is not None:
-            return f"Document inserted with ID: {result.upserted_id}"
+            return result.upserted_id
         else:
-            return "Document already exists and was not inserted."
+            return f"Document with {unique_field}={document[unique_field]} already exists and was not inserted."
+
+    def insert_many_if_not_exists(self, documents: list, unique_field: str) -> list:
+        inserted_ids = []
+        for document in documents:
+            inserted_ids.append(self.insert_one_if_not_exists(document, unique_field))
+        return inserted_ids
+
+    def insert_one_replace_if_exists(self, document: dict, unique_field: str) -> str:
+        # Define the query to check if a document with the unique field already exists
+        query = {unique_field: str(document[unique_field])}
+
+        # Use upsert=True to replace the document if it exists
+        result = self.collection.replace_one(query, document, upsert=True)
+
+        if result.upserted_id is not None:
+            return result.upserted_id
+        else:
+            return f"Document with {unique_field}={document[unique_field]} replaced."
+
+    def insert_many_replace_if_exists(self, documents: list, unique_field: str) -> list:
+        inserted_ids = []
+        for document in documents:
+            inserted_ids.append(self.insert_one_replace_if_exists(document, unique_field))
+        return inserted_ids
 
     def find(self, query: dict) -> list:
         # Find documents matching a query in a collection
