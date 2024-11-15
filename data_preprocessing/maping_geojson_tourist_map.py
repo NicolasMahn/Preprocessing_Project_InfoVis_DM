@@ -57,9 +57,6 @@ width, height = image.size
 # Set plot size to match the dimensions of MC2-tourist.jpg
 fig, ax = plt.subplots(figsize=(width / 100, height / 100))  # Adjust the size as needed
 
-# Display the image as the background
-ax.imshow(image, extent=[gdf.total_bounds[0], gdf.total_bounds[2], gdf.total_bounds[1], gdf.total_bounds[3]], aspect='auto')
-
 # Use a predefined color palette
 colors = list(mcolors.TABLEAU_COLORS.values())
 color_map = {name: colors[i % len(colors)] for i, name in enumerate(desired_street_names)}
@@ -100,11 +97,17 @@ ax.yaxis.set_major_locator(FixedLocator(y_ticks))
 ax.set_xticklabels([f"{tick:.6f}° E" for tick in x_ticks])
 ax.set_yticklabels([f"{tick:.6f}° N" for tick in y_ticks])
 
+# Save plot as PNG with transparent background
+plt.savefig('map_abila_grid_transparent.png', transparent=True)
+
 # Add a white border around the plot
 fig.patch.set_facecolor('white')
 fig.subplots_adjust(left=0.05, right=0.975, top=0.975, bottom=0.05)
 
-# Save plot as PNG with transparent background
+# Display the image as the background
+ax.imshow(image, extent=[gdf.total_bounds[0], gdf.total_bounds[2], gdf.total_bounds[1], gdf.total_bounds[3]], aspect='auto')
+
+# Save plot with the MC2 tourist map as background
 plt.savefig('overlapped_map_abila_tourist.png')
 
 # Show plot
