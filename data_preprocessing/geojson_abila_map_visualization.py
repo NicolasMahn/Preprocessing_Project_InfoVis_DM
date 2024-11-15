@@ -6,6 +6,7 @@ import geopandas as gpd
 import matplotlib.patches as mpatches
 import matplotlib.colors as mcolors
 from PIL import Image
+from matplotlib.ticker import FixedLocator
 
 # Load GeoJSON data
 geojson_path = '../data/abila_2.geojson'
@@ -45,9 +46,8 @@ for feature in geojson_data['features']:
                     geometries.append(geom)
                     street_names.append(street_name)
 
-# Create a GeoDataFrame and reproject to EPSG:3857
+# Create a GeoDataFrame without reprojecting
 gdf = gpd.GeoDataFrame({'geometry': geometries, 'Name': street_names}, crs="EPSG:4326")
-gdf = gdf.to_crs(epsg=3857)
 
 # Get the dimensions of the image
 image_path = '../data/MC2-tourist.jpg'
@@ -87,9 +87,15 @@ ax.grid(which='minor', linestyle=':', linewidth=0.4)
 ax.xaxis.set_major_locator(plt.MaxNLocator(nbins=20))
 ax.yaxis.set_major_locator(plt.MaxNLocator(nbins=20))
 
-# Format the tick labels to show double numbers
-ax.set_xticklabels([f"{int(tick):02d}" for tick in ax.get_xticks()])
-ax.set_yticklabels([f"{int(tick):02d}" for tick in ax.get_yticks()])
+# Use FixedLocator to set the ticks
+x_ticks = ax.get_xticks()
+y_ticks = ax.get_yticks()
+ax.xaxis.set_major_locator(FixedLocator(x_ticks))
+ax.yaxis.set_major_locator(FixedLocator(y_ticks))
+
+# Format the tick labels to show the original coordinates
+ax.set_xticklabels([f"{tick:.6f}° E" for tick in x_ticks])
+ax.set_yticklabels([f"{tick:.6f}° N" for tick in y_ticks])
 
 # Save plot as PNG with transparent background
 plt.savefig('street_map.png', transparent=True)
