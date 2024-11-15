@@ -1,5 +1,8 @@
-pymongo
-matplotlib
-contextily
-geopandas
+pymongo~=4.10.1
+matplotlib~=3.9.2
+contextily~=1.6.2
 numpy
+shapely~=2.0.6
+geopandas~=1.0.1
+pillow~=11.0.0
+pandas

@@ -1,8 +1,11 @@
 import json
-from shapely.geometry import shape, LineString, Polygon, MultiPolygon
+import pandas as pd
+from shapely.geometry import shape, LineString, Polygon, MultiPolygon, Point
 import matplotlib.pyplot as plt
-import contextily as ctx
 import geopandas as gpd
+import matplotlib.patches as mpatches
+import matplotlib.colors as mcolors
+from PIL import Image
 
 # Load GeoJSON data
 geojson_path = '../data/abila_2.geojson'
@@ -10,9 +13,8 @@ with open(geojson_path) as f:
     geojson_data = json.load(f)
 
 # Define the array of street names to display
-desired_street_names = ["Pilau Street", "Parla Street", "Spetson Street", "Taxiarchon Avenue", "Carnero Street", "Rist Way",
-    "Barwyn Street", "Arkadiou Street", "Velestinou Boulevard", "Alfou Street",
-    "Androutsou Street", "Ermou Street", "Egeou Avenue", "Ipsilonut Avenue"]
+desired_street_names = ["Rist Way", "Carnero St", "Barwyn St", "Arkadiou St", "Androutsou St", "Velestinou Blv", "Ermou St", "Egeou Av", "Ipsilonut Av",
+                        "Pilau St", "Parla St", "Spetson St", "Taxiarchon Ave"]
 
 # Extract geometries and properties
 geometries = []
@@ -21,47 +23,76 @@ for feature in geojson_data['features']:
     geometry = feature['geometry']
     street_name = feature['properties']['Name']
 
-    # Check if coordinates exist and contain sufficient points
-    if "coordinates" in geometry:
-        if geometry["type"] == "LineString" and len(geometry["coordinates"]) > 1:
-            geom = shape(geometry)
-            geometries.append(geom)
-            street_names.append(street_name)
-        elif geometry["type"] == "Polygon" and len(geometry["coordinates"][0]) > 1:
-            geom = shape(geometry)
-            geometries.append(geom)
-            street_names.append(street_name)
-        elif geometry["type"] == "MultiPolygon":
-            # Check each Polygon in the MultiPolygon
-            valid_polygons = []
-            for poly_coords in geometry["coordinates"]:
-                if len(poly_coords[0]) > 1:  # Ensure exterior ring has >1 point
-                    valid_polygons.append(poly_coords)
-            if valid_polygons:
-                geom = shape({"type": "MultiPolygon", "coordinates": valid_polygons})
+    # Check if any part of the street name matches the desired street names
+    if any(desired_name in street_name for desired_name in desired_street_names):
+        if "coordinates" in geometry:
+            if geometry["type"] == "LineString" and len(geometry["coordinates"]) > 1:
+                geom = shape(geometry)
                 geometries.append(geom)
                 street_names.append(street_name)
+            elif geometry["type"] == "Polygon" and len(geometry["coordinates"][0]) > 1:
+                geom = shape(geometry)
+                geometries.append(geom)
+                street_names.append(street_name)
+            elif geometry["type"] == "MultiPolygon":
+                # Check each Polygon in the MultiPolygon
+                valid_polygons = []
+                for poly_coords in geometry["coordinates"]:
+                    if len(poly_coords[0]) > 1:  # Ensure exterior ring has >1 point
+                        valid_polygons.append(poly_coords)
+                if valid_polygons:
+                    geom = shape({"type": "MultiPolygon", "coordinates": valid_polygons})
+                    geometries.append(geom)
+                    street_names.append(street_name)
 
 # Create a GeoDataFrame and reproject to EPSG:3857
 gdf = gpd.GeoDataFrame({'geometry': geometries, 'Name': street_names}, crs="EPSG:4326")
 gdf = gdf.to_crs(epsg=3857)
 
-# Plot the geometries
-fig, ax = plt.subplots(figsize=(10, 10))
+# Get the dimensions of the image
+image_path = '../data/MC2-tourist.jpg'
+image = Image.open(image_path)
+width, height = image.size
+
+# Set plot size to match the dimensions of MC2-tourist.jpg
+fig, ax = plt.subplots(figsize=(width / 100, height / 100))  # Adjust the size as needed
+
+# Use a predefined color palette
+colors = list(mcolors.TABLEAU_COLORS.values())
+color_map = {name: colors[i % len(colors)] for i, name in enumerate(desired_street_names)}
+
+# Plot the geometries with different colors and increased line width
 for geom, name in zip(gdf.geometry, gdf.Name):
-    if isinstance(geom, Polygon):
-        x, y = geom.exterior.xy
-        ax.fill(x, y, color='blue', alpha=0.5)
-    elif isinstance(geom, LineString):
-        x, y = geom.xy
-        ax.plot(x, y, color='blue')
+    # Find the matching desired street name
+    matching_name = next((desired_name for desired_name in desired_street_names if desired_name in name), None)
+    if matching_name:
+        color = color_map[matching_name]
+        if isinstance(geom, Polygon):
+            x, y = geom.exterior.xy
+            ax.fill(x, y, color=color, alpha=0.5)
+        elif isinstance(geom, LineString):
+            x, y = geom.xy
+            ax.plot(x, y, color=color, linewidth=4)  # Increase line width
 
-    if name in desired_street_names:
-        centroid = geom.centroid
-        ax.text(centroid.x, centroid.y, name, fontsize=8, ha='right')
+# Create legend
+legend_patches = [mpatches.Patch(color=color, label=name) for name, color in color_map.items()]
+ax.legend(handles=legend_patches, title="Street Names")
 
-# Add basemap
-ctx.add_basemap(ax, crs=gdf.crs)
+# Add finer grid to the plot
+ax.grid(True, which='both', linestyle='-', linewidth=0.8)
+ax.minorticks_on()
+ax.grid(which='minor', linestyle=':', linewidth=0.4)
+
+# Set more numbers on the axis
+ax.xaxis.set_major_locator(plt.MaxNLocator(nbins=20))
+ax.yaxis.set_major_locator(plt.MaxNLocator(nbins=20))
+
+# Format the tick labels to show double numbers
+ax.set_xticklabels([f"{int(tick):02d}" for tick in ax.get_xticks()])
+ax.set_yticklabels([f"{int(tick):02d}" for tick in ax.get_yticks()])
+
+# Save plot as PNG with transparent background
+plt.savefig('street_map.png', transparent=True)
 
 # Show plot
 plt.show()
