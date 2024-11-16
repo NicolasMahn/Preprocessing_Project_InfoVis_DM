@@ -14,7 +14,7 @@ with open(geojson_path) as f:
     geojson_data = json.load(f)
 
 # Define the array of street names to display
-desired_street_names = ["Rist Way", "Carnero St", "Barwyn St", "Arkadiou St", "Androutsou St", "Velestinou Blv", "Ermou St", "Egeou Av", "Ipsilonut Av",
+desired_street_names = ["Rist Way", "Carnero St", "Barwyn St", "Arkadiou St", "Androutsou St", "Velestinou Blv", "Ermou St", "Egeou Av", "Ipsilantou Ave",
                         "Pilau St", "Parla St", "Spetson St", "Taxiarchon Ave"]
 
 # Extract geometries and properties
