@@ -1,25 +1,25 @@
 import csv
 import json
 
-# Pfade anpassen
-input_csv = "../data/locations.csv"  # Name deiner CSV-Datei
-output_geojson = "../data/locations.geojson"
+# Paths
+input_csv = '../data/locations.csv'  # Name of your CSV file
+output_geojson = '../data/locations.geojson'
 
-# GeoJSON-Grundstruktur
+# GeoJSON base structure
 geojson = {
     "type": "FeatureCollection",
     "features": []
 }
 
-# CSV einlesen und in GeoJSON umwandeln
-with open(input_csv, "r", encoding="utf-8") as csvfile:
-    reader = csv.DictReader(csvfile, delimiter=";")
+# Read CSV and convert to GeoJSON
+with open(input_csv, 'r', encoding='utf-8') as csvfile:
+    reader = csv.DictReader(csvfile, delimiter=';')
     for row in reader:
-        # Name und Koordinaten auslesen
-        name = row["location"]
-        coordinates = json.loads(row["coordinates"])  # Wandelt die Koordinaten von JSON-ähnlichem String in Liste um
+        # Read name and coordinates
+        name = row['location']
+        coordinates = json.loads(row['coordinates'])  # Convert coordinates from JSON-like string to list
 
-        # Feature erstellen
+        # Create feature
         feature = {
             "type": "Feature",
             "properties": {
@@ -32,8 +32,8 @@ with open(input_csv, "r", encoding="utf-8") as csvfile:
         }
         geojson["features"].append(feature)
 
-# GeoJSON-Datei speichern
-with open(output_geojson, "w", encoding="utf-8") as geojsonfile:
+# Save GeoJSON file (overwrite if exists)
+with open(output_geojson, 'w', encoding='utf-8') as geojsonfile:
     json.dump(geojson, geojsonfile, ensure_ascii=False, indent=4)
 
-print(f"GeoJSON-Datei erfolgreich erstellt: {output_geojson}")
+print(f"GeoJSON file successfully created: {output_geojson}")
