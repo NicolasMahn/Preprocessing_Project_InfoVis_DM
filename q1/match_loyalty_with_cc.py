@@ -154,11 +154,11 @@ def main():
         loyalty_index = [i for i, row in enumerate(loyalty_data[1]) if row[3] == card]
         if len(loyalty_index) > 1:
             loyalty_index = loyalty_index[0]
-            if loyalty_data[1][loyalty_index][0] in [i[0].date() for i in sketchy_card_data] \
+            if loyalty_data[1][loyalty_index][0].date() in [i[0].date() for i in sketchy_card_data] \
                 and loyalty_data[1][loyalty_index][1] in [i[1] for i in sketchy_card_data] \
                 and loyalty_data[1][loyalty_index][2] in [i[2] for i in sketchy_card_data]:
                 index = next(i for i, row in enumerate(sketchy_card_data)
-                             if row[0] == loyalty_data[1][loyalty_index][0].date()
+                             if row[0].date() == loyalty_data[1][loyalty_index][0].date()
                              and row[1] == loyalty_data[1][loyalty_index][1]
                              and row[2] == loyalty_data[1][loyalty_index][2])
                 sketchy_card_data[index][4] = card
