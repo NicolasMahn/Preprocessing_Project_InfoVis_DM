@@ -1,5 +1,8 @@
 pymongo
 matplotlib
 contextily
-geopandas
 numpy
+shapely
+geopandas
+pillow
+pandas
