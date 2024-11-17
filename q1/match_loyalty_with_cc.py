@@ -2,6 +2,7 @@ from mongo import DB
 import load_data
 import datetime
 import util
+import matplotlib.pyplot as plt
 
 def sort_data_by_date(date_dict, data, type):
     for row in data[1]:
@@ -91,17 +92,43 @@ def get_cc_loyalty_pairs(cc_data, loyalty_data):
     return loyalty_cc_pairs, complex_pairs, no_pair_found_cc, no_pair_found_loyalty, simple_cards, non_simple_cards
 
 
+def get_purchases_per_location(data):
+    location_counts = {}
+    for row in data:
+        location = row[1]  # Assuming 'location' is the second column
+        if location in location_counts:
+            location_counts[location] += 1
+        else:
+            location_counts[location] = 1
+    return location_counts
+
+def plot_percent_sketchy_vs_cleaned_location(card_location_data, type_):
+    locations = list(card_location_data.keys())
+    percent_cleaned = [card_location_data[loc][f"{type_}_cleaned"] for loc in locations]
+    percent_sketchy = [card_location_data[loc][f"{type_}_sketchy"] for loc in locations]
+
+    x = range(len(locations))
+
+    fig, ax = plt.subplots(figsize=(10, 6))
+
+    bar_width = 0.35
+    bar1 = ax.bar(x, percent_cleaned, bar_width, label=f"{type_} Cleaned")
+    bar2 = ax.bar([i + bar_width for i in x], percent_sketchy, bar_width, label=f"{type_} Sketchy")
+
+    ax.set_xlabel('Location')
+    ax.set_ylabel(type_)
+    ax.set_title('Comparison of Sketchy vs Legitimate Purchases at Locations')
+    ax.set_xticks([i + bar_width / 2 for i in x])
+    ax.set_xticklabels(locations, rotation=45, ha='right')
+    ax.legend()
+
+    plt.tight_layout()
+    plt.show()
+
+
 def main():
     cc_data = load_data.open_csv_file("../data/cc_data.csv")
     loyalty_data = load_data.open_csv_file("../data/loyalty_data.csv")
-
-    print(cc_data[0])
-    print(cc_data[1][0])
-    print(cc_data[1][1])
-    print()
-    print(loyalty_data[0])
-    print(loyalty_data[1][0])
-    print(loyalty_data[1][1])
 
 
     loyalty_cc_pairs, complex_pairs, no_pair_found_cc, no_pair_found_loyalty, simple_cards, non_simple_cards = (
@@ -138,9 +165,68 @@ def main():
             else:
                 sketchy_card_data.append([loyalty_data[1][loyalty_index][0], loyalty_data[1][loyalty_index][1],
                                           loyalty_data[1][loyalty_index][2], None, card])
-    cleaned_card_data = [["date", "location", "price", "last4ccnum", "loyaltynum"]] + cleaned_card_data
-    util.save_csv(cleaned_card_data, "../data/sketchy_card_data.csv")
-    print(sketchy_card_data)
+    sketchy_card_data = [["date", "location", "price", "last4ccnum", "loyaltynum"]] + sketchy_card_data
+    util.save_csv(sketchy_card_data, "../data/sketchy_card_data.csv")
+
+    print(cleaned_card_data[0])
+    print(cleaned_card_data[1])
+    print(cleaned_card_data[2])
+    print(cleaned_card_data[3])
+    print()
+    print(sketchy_card_data[0])
+    print(sketchy_card_data[1])
+    print(sketchy_card_data[2])
+    print(sketchy_card_data[3])
+
+    cleaned_card_location_data = get_purchases_per_location(cleaned_card_data)
+    sketchy_card_location_data = get_purchases_per_location(sketchy_card_data)
+
+    sum_locations_clen = sum(cleaned_card_location_data.values())
+    sum_locations_sketchy = sum(sketchy_card_location_data.values())
+
+    card_location_data = {}
+    for location, num in cleaned_card_location_data.items():
+        avg_sketchy_amount = []
+        for row in sketchy_card_data:
+            if row[0] == "date":
+                continue
+            if row[1] == location:
+                avg_sketchy_amount.append(row[2])
+        if len(avg_sketchy_amount) == 0:
+            avg_sketchy_amount = 0
+        else:
+            avg_sketchy_amount = sum(avg_sketchy_amount)/len(avg_sketchy_amount)
+
+        avg_cleaned_amount = []
+        for row in cleaned_card_data:
+            if row[0] == "date":
+                continue
+            if row[1] == location:
+                avg_cleaned_amount.append(row[2])
+        if len(avg_cleaned_amount) == 0:
+            avg_cleaned_amount = 0
+        else:
+            avg_cleaned_amount = sum(avg_cleaned_amount)/len(avg_cleaned_amount)
+
+        card_location_data[location] =  {
+            "absolut_cleaned": num,
+            "absolut_sketchy": sketchy_card_location_data.get(location, 0),
+            "percent_cleaned": num/sum_locations_clen,
+            "percent_sketchy": sketchy_card_location_data.get(location, 0)/sum_locations_sketchy,
+            "avg_amount_cleaned": avg_cleaned_amount,
+            "avg_amount_sketchy": avg_sketchy_amount
+        }
+
+    plot_percent_sketchy_vs_cleaned_location(card_location_data, "percent")
+    plot_percent_sketchy_vs_cleaned_location(card_location_data, "absolut")
+    card_location_data.pop("Nationwide Refinery")
+    card_location_data.pop("Abila Airport")
+    card_location_data.pop("Abila Scrapyard")
+    card_location_data.pop("Kronos Pipe and Irrigation")
+    plot_percent_sketchy_vs_cleaned_location(card_location_data, "avg_amount")
+    # mongo = DB("percent_location_comparison_sketchy_vs_cleaned")
+    # mongo.delete_many({})
+
 
 
 
