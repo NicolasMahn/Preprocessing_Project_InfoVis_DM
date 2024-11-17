@@ -98,7 +98,7 @@ ax.set_xticklabels([f"{tick:.6f}° E" for tick in x_ticks])
 ax.set_yticklabels([f"{tick:.6f}° N" for tick in y_ticks])
 
 # Save plot as PNG with transparent background
-plt.savefig('map_abila_grid_transparent.png', transparent=True)
+plt.savefig('./plots/map_abila_grid_transparent.png', transparent=True)
 
 # Add a white border around the plot
 fig.patch.set_facecolor('white')
@@ -108,7 +108,7 @@ fig.subplots_adjust(left=0.05, right=0.975, top=0.975, bottom=0.05)
 ax.imshow(image, extent=[gdf.total_bounds[0], gdf.total_bounds[2], gdf.total_bounds[1], gdf.total_bounds[3]], aspect='auto')
 
 # Save plot with the MC2 tourist map as background
-plt.savefig('overlapped_map_abila_tourist.png')
+plt.savefig('./plots/overlapped_map_abila_tourist.png')
 
 # Show plot
 plt.show()
