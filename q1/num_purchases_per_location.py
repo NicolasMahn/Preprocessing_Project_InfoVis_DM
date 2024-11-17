@@ -13,8 +13,8 @@ def get_purchases_per_location(data):
 
 
 def main():
-    cc_data = load_data.open_csv_file("data/cc_data.csv")
-    loyalty_data = load_data.open_csv_file("data/loyalty_data.csv")
+    cc_data = load_data.open_csv_file("../data/cc_data.csv")
+    loyalty_data = load_data.open_csv_file("../data/loyalty_data.csv")
 
     mongo = DB("num_purchases_per_location")
     mongo.delete_many({})

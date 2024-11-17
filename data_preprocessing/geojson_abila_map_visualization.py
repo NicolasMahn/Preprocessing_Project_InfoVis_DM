@@ -1,14 +1,15 @@
 import geopandas as gpd
 import matplotlib.pyplot as plt
 import contextily as ctx
+from shapely.geometry import Point
 
 # Load GeoJSON data
-geojson_path = './data/abila_2.geojson'
+geojson_path = '../data/abila_2.geojson'
 gdf = gpd.read_file(geojson_path)
 
 # Plot the GeoDataFrame
 fig, ax = plt.subplots(figsize=(10, 10))
-gdf.plot(ax=ax, color='blue', edgecolor='black')
+gdf.plot(ax=ax, color='blue')
 
 # Add street names
 for x, y, label in zip(gdf.geometry.centroid.x, gdf.geometry.centroid.y, gdf['street_name']):
