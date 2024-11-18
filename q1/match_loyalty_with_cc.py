@@ -16,20 +16,107 @@ def sort_data_by_date(date_dict, data, type):
     return date_dict
 
 
-def extract_complex_pairs(loyalty_cc_pairs):
+def natural_number_coincidence_test(pair, cc_data, loyalty_data, cc, loyalty):
+    # print(f"Complex pairs interactions {i}: {pair}")
+
+    for p in pair:
+        ds = []
+        if p in cc:
+            for ccd in cc_data[1]:
+                if ccd[3] == p:
+                    ds.append(ccd)
+                    # print(f"cc: {ccd}")
+        if p in loyalty:
+            for ld in loyalty_data[1]:
+                if ld[3] == p:
+                    ds.append(ld)
+                    # print(f"loyalty: {ld}")
+        total_cp_count = set()
+        pair_count = {}
+        for p_sub in pair:
+            if p_sub != p:
+                pp_count = 0
+                for d in ds:
+                    for c_ccd in cc_data[1]:
+                        if (d[0].date() == c_ccd[0].date() and d[1] == c_ccd[1] and d[2] == c_ccd[2] and
+                                c_ccd[3] == p_sub):
+                            cp_count = 2
+                            c_pair = [p, p_sub]
+                            for p_sub_sub in pair:
+                                if p_sub_sub != p_sub and p_sub_sub != p:
+                                    for c_ccd in cc_data[1]:
+                                        if (d[0].date() == c_ccd[0].date() and d[1] == c_ccd[1] and d[2] ==
+                                                c_ccd[2] and
+                                                c_ccd[3] == p_sub_sub):
+                                            cp_count += 1
+                                            c_pair.append(p_sub_sub)
+                                    for c_ld in loyalty_data[1]:
+                                        if (d[0].date() == c_ld[0].date() and d[1] == c_ld[1] and
+                                                d[2] == c_ld[2] and c_ld[3] == p_sub_sub):
+                                            cp_count += 1
+                                            c_pair.append(p_sub_sub)
+                            if cp_count > 2:
+                                # print(f"Complex pair count {p}: {cp_count}")
+                                total_cp_count.add(tuple(c_pair))
+                            pp_count += 1
+                            continue
+                    for c_ld in loyalty_data[1]:
+                        if (d[0].date() == c_ld[0].date() and d[1] == c_ld[1] and d[2] == c_ld[2] and
+                                c_ld[3] == p_sub):
+                            cp_count = 2
+                            c_pair = [p, p_sub]
+                            for p_sub_sub in pair:
+                                if p_sub_sub != p_sub and p_sub_sub != p:
+                                    for c_ccd in cc_data[1]:
+                                        if (d[0].date() == c_ccd[0].date() and d[1] == c_ccd[1] and d[2] ==
+                                                c_ccd[2] and
+                                                c_ccd[3] == p_sub_sub):
+                                            cp_count += 1
+                                            c_pair.append(p_sub_sub)
+                                    for c_ld in loyalty_data[1]:
+                                        if (d[0].date() == c_ld[0].date() and d[1] == c_ld[1] and
+                                                d[2] == c_ld[2] and c_ld[3] == p_sub_sub):
+                                            cp_count += 1
+                                            c_pair.append(p_sub_sub)
+                            if cp_count > 2:
+                                # print(f"Complex pair found with {c_pair}")
+                                total_cp_count.add(tuple(c_pair))
+                            pp_count += 1
+                pair_count[p_sub] = pp_count
+
+        # print(f"Pair count {p}: {pair_count}")
+    # print(total_cp_count)
+    num = sum([1 / (len(tcc) - 1) for tcc in total_cp_count])
+    return (isinstance(num, int) or (isinstance(num, float) and num.is_integer())) and num > 0
+
+
+def extract_complex_pairs(loyalty_cc_pairs, cc_data, loyalty_data):
     cc = []
     loyalty = []
     complex_pairs = set()
-    loyalty_cc_pairs_copy = list(loyalty_cc_pairs.copy())
-    for pair in loyalty_cc_pairs_copy:
-        complex_pairs, loyalty_cc_pairs, cc = extract_complex_pair(pair[0], pair, complex_pairs, loyalty_cc_pairs,
-                                                                   loyalty_cc_pairs_copy, cc)
-        complex_pairs, loyalty_cc_pairs, loyalty = extract_complex_pair(pair[1], pair, complex_pairs, loyalty_cc_pairs,
-                                                                        loyalty_cc_pairs_copy, loyalty)
+    for pair in loyalty_cc_pairs:
+        complex_pairs, removal_list, cc = extract_complex_pair(pair[0], pair, complex_pairs,
+                                                               loyalty_cc_pairs, cc)
+        complex_pairs, removal_list, loyalty = extract_complex_pair(pair[1], pair, complex_pairs,
+                                                                    loyalty_cc_pairs, loyalty)
+
+    complex_pairs_copy = complex_pairs.copy()
+    for pair in complex_pairs_copy:
+        if natural_number_coincidence_test(pair, cc_data, loyalty_data, cc, loyalty):
+            if pair in complex_pairs:
+                complex_pairs.remove(pair)
+            for r_pair in removal_list.copy():
+                for p in pair:
+                    if p in r_pair and r_pair in removal_list:
+                        removal_list.remove(r_pair)
+    for r_pair in removal_list:
+        loyalty_cc_pairs.remove(r_pair)
+
     return complex_pairs, loyalty_cc_pairs
 
 
-def extract_complex_pair(pair_part, pair, complex_pairs, loyalty_cc_pairs, loyalty_cc_pairs_copy, cards):
+def extract_complex_pair(pair_part, pair, complex_pairs, loyalty_cc_pairs, cards):
+    removal_list = []
     if pair_part in cards:
         for i in complex_pairs:
             if pair_part in i:
@@ -39,17 +126,16 @@ def extract_complex_pair(pair_part, pair, complex_pairs, loyalty_cc_pairs, loyal
         while l != len(cp):
             l = len(cp)
             for j in range(len(cp)):
-                for k in loyalty_cc_pairs_copy:
+                for k in loyalty_cc_pairs:
                     if list(cp)[j] == k[0] or list(cp)[j] == k[1]:
                         cp.add(k[0])
                         cp.add(k[1])
-                        if k in loyalty_cc_pairs:
-                            loyalty_cc_pairs.remove(k)
+                        removal_list.append(k)
         complex_pairs.add(tuple(cp))
     else:
         cards.append(pair_part)
 
-    return complex_pairs, loyalty_cc_pairs, cards
+    return complex_pairs, removal_list, cards
 
 
 def get_cc_loyalty_pairs(cc_data, loyalty_data):
@@ -61,46 +147,53 @@ def get_cc_loyalty_pairs(cc_data, loyalty_data):
     no_pair_found_cc = set()
     no_pair_found_loyalty = set()
     for v in dates.values():
-        for cc_data in v["cc"]:
-            for loyalty_data in v["loyalty"]:
-                if cc_data[1] == loyalty_data[1]:
-                    if cc_data[2] == loyalty_data[2]:
-                        loyalty_cc_pairs.add((cc_data[3], loyalty_data[3]))
-                        found_pairs.add(cc_data[3])
-                        found_pairs.add(loyalty_data[3])
+        for ccd in v["cc"]:
+            for ld in v["loyalty"]:
+                if ccd[1] == ld[1]:
+                    if ccd[2] == ld[2]:
+                        loyalty_cc_pairs.add((ccd[3], ld[3]))
+                        found_pairs.add(ccd[3])
+                        found_pairs.add(ld[3])
 
-        for cc_data in v["cc"]:
-            if cc_data[3] not in found_pairs:
-                no_pair_found_cc.add(cc_data[3])
+        for ccd in v["cc"]:
+            if ccd[3] not in found_pairs:
+                no_pair_found_cc.add(ccd[3])
 
-        for loyalty_data in v["loyalty"]:
-            if loyalty_data[3] not in found_pairs:
-                no_pair_found_loyalty.add(loyalty_data[3])
+        for ld in v["loyalty"]:
+            if ld[3] not in found_pairs:
+                no_pair_found_loyalty.add(ld[3])
 
-    complex_pairs, loyalty_cc_pairs = extract_complex_pairs(loyalty_cc_pairs)
+    complex_pairs, loyalty_cc_pairs = extract_complex_pairs(loyalty_cc_pairs, cc_data, loyalty_data)
 
-    non_simple_cards = set()
+    sketchy_cards = set()
     for cp in complex_pairs:
         for p in cp:
-            non_simple_cards.add(p)
+            sketchy_cards.add(p)
+    for npfc in no_pair_found_cc:
+         sketchy_cards.add(npfc)
+    for npfl in no_pair_found_loyalty:
+         sketchy_cards.add(npfl)
 
     simple_cards = set()
     for pair in loyalty_cc_pairs:
         for p in pair:
             simple_cards.add(p)
 
-    return loyalty_cc_pairs, complex_pairs, no_pair_found_cc, no_pair_found_loyalty, simple_cards, non_simple_cards
+    return loyalty_cc_pairs, complex_pairs, no_pair_found_cc, no_pair_found_loyalty, simple_cards, sketchy_cards
 
 
 def get_purchases_per_location(data):
     location_counts = {}
     for row in data:
+        if row[0] == "date":
+            continue
         location = row[1]  # Assuming 'location' is the second column
         if location in location_counts:
             location_counts[location] += 1
         else:
             location_counts[location] = 1
     return location_counts
+
 
 def plot_percent_sketchy_vs_cleaned_location(card_location_data, type_):
     locations = list(card_location_data.keys())
@@ -131,37 +224,35 @@ def main():
     loyalty_data = load_data.open_csv_file("../data/loyalty_data.csv")
 
 
-    loyalty_cc_pairs, complex_pairs, no_pair_found_cc, no_pair_found_loyalty, simple_cards, non_simple_cards = (
+    loyalty_cc_pairs, complex_pairs, no_pair_found_cc, no_pair_found_loyalty, simple_cards, sketchy_cards = (
         get_cc_loyalty_pairs(cc_data, loyalty_data))
-
 
     cleaned_card_data = []
     for pair in loyalty_cc_pairs:
-        index = next(i for i, row in enumerate(cc_data[1]) if row[3] == pair[0])
-        cleaned_card_data.append([cc_data[1][index][0], cc_data[1][index][1], cc_data[1][index][2], pair[0], pair[1]])
+        indices = [i for i, row in enumerate(cc_data[1]) if row[3] == pair[0]]
+        for index in indices:
+            cleaned_card_data.append([cc_data[1][index][0], cc_data[1][index][1], cc_data[1][index][2], pair[0], pair[1]])
     cleaned_card_data = [["date", "location", "price", "last4ccnum", "loyaltynum"]] + cleaned_card_data
     util.save_csv(cleaned_card_data, "../data/cleaned_card_data.csv")
 
     sketchy_card_data = []
-    for card in non_simple_cards:
-        cc_index = [i for i, row in enumerate(cc_data[1]) if row[3] == card]
-        if len(cc_index) > 1:
-            cc_index = cc_index[0]
+    for card in sketchy_cards:
+        cc_indices = [i for i, row in enumerate(cc_data[1]) if row[3] == card]
+        for cc_index in cc_indices:
             sketchy_card_data.append([cc_data[1][cc_index][0], cc_data[1][cc_index][1], cc_data[1][cc_index][2],
                                       card, None])
 
-    for card in non_simple_cards:
-        loyalty_index = [i for i, row in enumerate(loyalty_data[1]) if row[3] == card]
-        if len(loyalty_index) > 1:
-            loyalty_index = loyalty_index[0]
-            if loyalty_data[1][loyalty_index][0].date() in [i[0].date() for i in sketchy_card_data] \
-                and loyalty_data[1][loyalty_index][1] in [i[1] for i in sketchy_card_data] \
-                and loyalty_data[1][loyalty_index][2] in [i[2] for i in sketchy_card_data]:
-                index = next(i for i, row in enumerate(sketchy_card_data)
-                             if row[0].date() == loyalty_data[1][loyalty_index][0].date()
-                             and row[1] == loyalty_data[1][loyalty_index][1]
-                             and row[2] == loyalty_data[1][loyalty_index][2])
-                sketchy_card_data[index][4] = card
+    for card in sketchy_cards:
+        loyalty_indices = [i for i, row in enumerate(loyalty_data[1]) if row[3] == card]
+        for loyalty_index in loyalty_indices:
+            scd_index = [i for i, row in enumerate(sketchy_card_data)
+                         if row[0].date() == loyalty_data[1][loyalty_index][0].date()
+                         and row[1] == loyalty_data[1][loyalty_index][1]
+                         and row[2] == loyalty_data[1][loyalty_index][2]]
+            if len(scd_index) > 1:
+                sketchy_card_data[scd_index[0]][4] = card
+            elif len(scd_index) > 0:
+                sketchy_card_data[scd_index[0]][4] = card
             else:
                 sketchy_card_data.append([loyalty_data[1][loyalty_index][0], loyalty_data[1][loyalty_index][1],
                                           loyalty_data[1][loyalty_index][2], None, card])
@@ -174,9 +265,12 @@ def main():
     print(cleaned_card_data[3])
     print()
     print(sketchy_card_data[0])
-    print(sketchy_card_data[1])
-    print(sketchy_card_data[2])
-    print(sketchy_card_data[3])
+    if len(sketchy_card_data) > 1:
+        print(sketchy_card_data[1])
+    if len(sketchy_card_data) > 2:
+        print(sketchy_card_data[2])
+    if len(sketchy_card_data) > 3:
+        print(sketchy_card_data[3])
 
     cleaned_card_location_data = get_purchases_per_location(cleaned_card_data)
     sketchy_card_location_data = get_purchases_per_location(sketchy_card_data)
@@ -186,6 +280,7 @@ def main():
 
     card_location_data = {}
     for location, num in cleaned_card_location_data.items():
+
         avg_sketchy_amount = []
         for row in sketchy_card_data:
             if row[0] == "date":
@@ -208,21 +303,22 @@ def main():
         else:
             avg_cleaned_amount = sum(avg_cleaned_amount)/len(avg_cleaned_amount)
 
+        if sum_locations_sketchy == 0:
+            percent_sketchy = 0
+        else:
+            percent_sketchy = sketchy_card_location_data.get(location, 0)/sum_locations_sketchy
+
         card_location_data[location] =  {
             "absolut_cleaned": num,
             "absolut_sketchy": sketchy_card_location_data.get(location, 0),
             "percent_cleaned": num/sum_locations_clen,
-            "percent_sketchy": sketchy_card_location_data.get(location, 0)/sum_locations_sketchy,
+            "percent_sketchy": percent_sketchy,
             "avg_amount_cleaned": avg_cleaned_amount,
             "avg_amount_sketchy": avg_sketchy_amount
         }
 
     plot_percent_sketchy_vs_cleaned_location(card_location_data, "percent")
     plot_percent_sketchy_vs_cleaned_location(card_location_data, "absolut")
-    card_location_data.pop("Nationwide Refinery")
-    card_location_data.pop("Abila Airport")
-    card_location_data.pop("Abila Scrapyard")
-    card_location_data.pop("Kronos Pipe and Irrigation")
     plot_percent_sketchy_vs_cleaned_location(card_location_data, "avg_amount")
     # mongo = DB("percent_location_comparison_sketchy_vs_cleaned")
     # mongo.delete_many({})
