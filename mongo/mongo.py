@@ -3,15 +3,14 @@ from urllib.parse import quote_plus
 
 import scrt  # Assuming your credentials are stored in a secrets module
 
-
 class DB:
     def __init__(self, collection_name: str):
         # Initialize MongoDB client and database connection
-        username = quote_plus(secrets.mongodb_username)
-        password = quote_plus(secrets.mongodb_password)
-        client = MongoClient(f"mongodb://{username}:{password}@{secrets.aws_dns}:{secrets.mongodb_port}")
+        username = quote_plus(scrt.mongodb_username)
+        password = quote_plus(scrt.mongodb_password)
+        client = MongoClient(f"mongodb://{username}:{password}@{scrt.aws_dns}:{scrt.mongodb_port}")
 
-        self.db = client[secrets.mongodb_name]
+        self.db = client[scrt.mongodb_name]
         self.collection = self.db[collection_name]
 
     def get_db(self):

@@ -259,6 +259,7 @@ def main():
     sketchy_card_data = [["date", "location", "price", "last4ccnum", "loyaltynum"]] + sketchy_card_data
     util.save_csv(sketchy_card_data, "../data/sketchy_card_data.csv")
 
+    """
     print(cleaned_card_data[0])
     print(cleaned_card_data[1])
     print(cleaned_card_data[2])
@@ -271,6 +272,7 @@ def main():
         print(sketchy_card_data[2])
     if len(sketchy_card_data) > 3:
         print(sketchy_card_data[3])
+    """
 
     cleaned_card_location_data = get_purchases_per_location(cleaned_card_data)
     sketchy_card_location_data = get_purchases_per_location(sketchy_card_data)
@@ -308,11 +310,15 @@ def main():
         else:
             percent_sketchy = sketchy_card_location_data.get(location, 0)/sum_locations_sketchy
 
+        # TODO: Add Cars in Area
+        # Cars in area mok
+        ca
+
         card_location_data[location] =  {
             "absolut_cleaned": num,
             "absolut_sketchy": sketchy_card_location_data.get(location, 0),
-            "percent_cleaned": num/sum_locations_clen,
-            "percent_sketchy": percent_sketchy,
+            "percent_cleaned": (num/sum_locations_clen)*100,
+            "percent_sketchy": percent_sketchy*100,
             "avg_amount_cleaned": avg_cleaned_amount,
             "avg_amount_sketchy": avg_sketchy_amount
         }
@@ -320,29 +326,25 @@ def main():
     plot_percent_sketchy_vs_cleaned_location(card_location_data, "percent")
     plot_percent_sketchy_vs_cleaned_location(card_location_data, "absolut")
     plot_percent_sketchy_vs_cleaned_location(card_location_data, "avg_amount")
-    # mongo = DB("percent_location_comparison_sketchy_vs_cleaned")
-    # mongo.delete_many({})
 
+    for i, (location, data) in enumerate(card_location_data.items()):
+        print(location)
+        print(data)
+        print()
+        if i == 3:
+            break
 
-
-
-
-    return
-
-    mongo = DB("purchases_at_location_at_time")
+    mongo = DB("location_comparison_cleaned_vs_sketchy")
     mongo.delete_many({})
-    numb_purchases_per_location_cc = get_purchases_per_location(cc_data)
-    numb_purchases_per_location_loyalty = get_purchases_per_location(loyalty_data)
 
-    numb_purchases_per_location = []
-    for location in (numb_purchases_per_location_loyalty.keys() | numb_purchases_per_location_cc.keys()):
-        numb_purchases_per_location.append(
-            {"location": location,
-             "numb_purchases_cc": numb_purchases_per_location_cc.get(location, 0),
-             "numb_purchases_loyalty": numb_purchases_per_location_loyalty.get(location, 0)})
-
-    print(mongo.insert_many(numb_purchases_per_location))
+    mongo.insert_many([{"location": location, **data} for location, data in card_location_data.items()])
     print(mongo.find_all())
+
+
+
+
+
+
 
 
 if __name__ == "__main__":
