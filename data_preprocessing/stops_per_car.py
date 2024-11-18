@@ -28,7 +28,7 @@ for id_, entries in data.items():
             differences.append({
                 "start_time": previous_entry[0],
                 "end_time": current_entry[0],
-                "time_difference": time_difference,
+                "time_difference_sec": time_difference,
                 "start_coordinates": (previous_entry[1], previous_entry[2]),
                 "end_coordinates": (current_entry[1], current_entry[2])
             })
