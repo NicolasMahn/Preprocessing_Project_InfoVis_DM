@@ -17,7 +17,7 @@
         "id": 2,
         "min_latitude": 36.05402149,
         "max_latitude": 36.05591615,
-        "min_longitude": 24.90111033,
+        "min_longitude": 24.89986513,
         "max_longitude": 24.9025875
     },
     "3": {
@@ -29,9 +29,9 @@
     },
     "4": {
         "id": 4,
-        "min_latitude": 36.05970718,
+        "min_latitude": 36.05852647,
         "max_latitude": 36.05981728,
-        "min_longitude": 24.85797476,
+        "min_longitude": 24.85788532,
         "max_longitude": 24.85808225
     },
     "5": {
@@ -43,10 +43,10 @@
     },
     "6": {
         "id": 6,
-        "min_latitude": 36.06337955,
+        "min_latitude": 36.06319689,
         "max_latitude": 36.06349309,
         "min_longitude": 24.85096416,
-        "max_longitude": 24.85103902
+        "max_longitude": 24.8523291
     },
     "7": {
         "id": 7,
@@ -106,321 +106,272 @@
     },
     "15": {
         "id": 15,
-        "min_latitude": 36.054422,
-        "max_latitude": 36.05453641,
-        "min_longitude": 24.89986513,
-        "max_longitude": 24.89998627
-    },
-    "16": {
-        "id": 16,
         "min_latitude": 36.07522123,
         "max_latitude": 36.07530344,
         "min_longitude": 24.85626448,
         "max_longitude": 24.85641875
     },
-    "17": {
-        "id": 17,
-        "min_latitude": 36.06319689,
-        "max_latitude": 36.06330782,
-        "min_longitude": 24.85226413,
-        "max_longitude": 24.8523291
-    },
-    "18": {
-        "id": 18,
+    "16": {
+        "id": 16,
         "min_latitude": 36.08172086,
         "max_latitude": 36.08182801,
         "min_longitude": 24.85086542,
         "max_longitude": 24.85096705
     },
-    "19": {
-        "id": 19,
+    "17": {
+        "id": 17,
         "min_latitude": 36.08782311,
         "max_latitude": 36.08793202,
         "min_longitude": 24.85626317,
         "max_longitude": 24.8563725
     },
-    "20": {
-        "id": 20,
+    "18": {
+        "id": 18,
         "min_latitude": 36.08542073,
         "max_latitude": 36.08551128,
         "min_longitude": 24.86036422,
         "max_longitude": 24.86045943
     },
-    "21": {
-        "id": 21,
+    "19": {
+        "id": 19,
         "min_latitude": 36.07678178,
         "max_latitude": 36.07685769,
         "min_longitude": 24.86585799,
         "max_longitude": 24.8659217
     },
-    "22": {
-        "id": 22,
+    "20": {
+        "id": 20,
         "min_latitude": 36.05282139,
         "max_latitude": 36.05288367,
         "min_longitude": 24.86856833,
         "max_longitude": 24.8686314
     },
-    "23": {
-        "id": 23,
+    "21": {
+        "id": 21,
         "min_latitude": 36.08442031,
         "max_latitude": 36.08449538,
         "min_longitude": 24.86416741,
         "max_longitude": 24.86424047
     },
-    "24": {
-        "id": 24,
+    "22": {
+        "id": 22,
         "min_latitude": 36.07062423,
         "max_latitude": 36.07074329,
         "min_longitude": 24.89517128,
         "max_longitude": 24.89528259
     },
-    "25": {
-        "id": 25,
+    "23": {
+        "id": 23,
         "min_latitude": 36.08412021,
         "max_latitude": 36.08420924,
         "min_longitude": 24.85896462,
         "max_longitude": 24.85905306
     },
-    "26": {
-        "id": 26,
+    "24": {
+        "id": 24,
         "min_latitude": 36.0721146,
         "max_latitude": 36.07222342,
         "min_longitude": 24.87458425,
         "max_longitude": 24.87463899
     },
-    "27": {
-        "id": 27,
+    "25": {
+        "id": 25,
         "min_latitude": 36.06764665,
         "max_latitude": 36.06776326,
         "min_longitude": 24.90243213,
         "max_longitude": 24.90255423
     },
-    "28": {
-        "id": 28,
-        "min_latitude": 36.05852647,
-        "max_latitude": 36.05859887,
-        "min_longitude": 24.85788532,
-        "max_longitude": 24.85799357
-    },
-    "29": {
-        "id": 29,
+    "26": {
+        "id": 26,
         "min_latitude": 36.07712237,
         "max_latitude": 36.07717359,
         "min_longitude": 24.87616512,
         "max_longitude": 24.87621582
     },
-    "30": {
-        "id": 30,
+    "27": {
+        "id": 27,
         "min_latitude": 36.06238357,
-        "max_latitude": 36.06253955,
+        "max_latitude": 36.06323975,
         "min_longitude": 24.89876082,
-        "max_longitude": 24.89888179
+        "max_longitude": 24.90018668
     },
-    "31": {
-        "id": 31,
+    "28": {
+        "id": 28,
         "min_latitude": 36.06362146,
         "max_latitude": 36.06371539,
         "min_longitude": 24.88586563,
         "max_longitude": 24.88596752
     },
-    "32": {
-        "id": 32,
+    "29": {
+        "id": 29,
         "min_latitude": 36.06770151,
         "max_latitude": 36.06785144,
         "min_longitude": 24.89906735,
         "max_longitude": 24.89918987
     },
-    "33": {
-        "id": 33,
+    "30": {
+        "id": 30,
         "min_latitude": 36.06331951,
         "max_latitude": 36.06343537,
         "min_longitude": 24.89606524,
         "max_longitude": 24.89621309
     },
-    "34": {
-        "id": 34,
+    "31": {
+        "id": 31,
         "min_latitude": 36.06582169,
         "max_latitude": 36.06594383,
         "min_longitude": 24.90096591,
         "max_longitude": 24.90111713
     },
-    "35": {
-        "id": 35,
+    "32": {
+        "id": 32,
         "min_latitude": 36.05462322,
         "max_latitude": 36.05469486,
         "min_longitude": 24.88976575,
         "max_longitude": 24.88983886
     },
-    "36": {
-        "id": 36,
+    "33": {
+        "id": 33,
         "min_latitude": 36.0603222,
         "max_latitude": 36.06044736,
         "min_longitude": 24.90555346,
         "max_longitude": 24.90569385
     },
-    "37": {
-        "id": 37,
+    "34": {
+        "id": 34,
         "min_latitude": 36.05942407,
         "max_latitude": 36.05952152,
         "min_longitude": 24.89476544,
         "max_longitude": 24.89486921
     },
-    "38": {
-        "id": 38,
+    "35": {
+        "id": 35,
         "min_latitude": 36.08662294,
         "max_latitude": 36.08672657,
         "min_longitude": 24.85756336,
         "max_longitude": 24.85767289
     },
-    "39": {
-        "id": 39,
-        "min_latitude": 36.07212045,
-        "max_latitude": 36.07219229,
-        "min_longitude": 24.84130258,
-        "max_longitude": 24.84134818
-    },
-    "40": {
-        "id": 40,
+    "36": {
+        "id": 36,
         "min_latitude": 36.07292088,
         "max_latitude": 36.07301365,
         "min_longitude": 24.88396442,
         "max_longitude": 24.88405897
     },
-    "41": {
-        "id": 41,
+    "37": {
+        "id": 37,
         "min_latitude": 36.06641461,
         "max_latitude": 36.06650723,
         "min_longitude": 24.88256778,
         "max_longitude": 24.88265687
     },
-    "42": {
-        "id": 42,
-        "min_latitude": 36.06773925,
-        "max_latitude": 36.06776587,
-        "min_longitude": 24.87148791,
-        "max_longitude": 24.8715097
-    },
-    "43": {
-        "id": 43,
+    "38": {
+        "id": 38,
         "min_latitude": 36.05012433,
         "max_latitude": 36.05023212,
         "min_longitude": 24.9003978,
         "max_longitude": 24.90047475
     },
-    "44": {
-        "id": 44,
+    "39": {
+        "id": 39,
         "min_latitude": 36.08061881,
         "max_latitude": 36.08070364,
         "min_longitude": 24.84679835,
         "max_longitude": 24.84689384
     },
-    "45": {
-        "id": 45,
-        "min_latitude": 36.06314781,
-        "max_latitude": 36.06323975,
-        "min_longitude": 24.90006525,
-        "max_longitude": 24.90018668
-    },
-    "46": {
-        "id": 46,
+    "40": {
+        "id": 40,
         "min_latitude": 36.05892876,
         "max_latitude": 36.05903283,
         "min_longitude": 24.89276049,
         "max_longitude": 24.89285708
     },
-    "47": {
-        "id": 47,
+    "41": {
+        "id": 41,
         "min_latitude": 36.06944928,
         "max_latitude": 36.06955756,
         "min_longitude": 24.84147082,
         "max_longitude": 24.84160085
     },
-    "48": {
-        "id": 48,
+    "42": {
+        "id": 42,
         "min_latitude": 36.06922564,
         "max_latitude": 36.06931915,
         "min_longitude": 24.88416486,
         "max_longitude": 24.88426267
     },
-    "49": {
-        "id": 49,
+    "43": {
+        "id": 43,
         "min_latitude": 36.06722012,
         "max_latitude": 36.06732347,
         "min_longitude": 24.88586728,
         "max_longitude": 24.88596759
     },
-    "50": {
-        "id": 50,
+    "44": {
+        "id": 44,
         "min_latitude": 36.050888,
         "max_latitude": 36.05103021,
         "min_longitude": 24.82586806,
         "max_longitude": 24.82598413
     },
-    "51": {
-        "id": 51,
+    "45": {
+        "id": 45,
         "min_latitude": 36.06523446,
         "max_latitude": 36.06534083,
         "min_longitude": 24.83306528,
         "max_longitude": 24.83318494
     },
-    "52": {
-        "id": 52,
+    "46": {
+        "id": 46,
         "min_latitude": 36.06402993,
         "max_latitude": 36.06410072,
         "min_longitude": 24.84137818,
         "max_longitude": 24.8414797
     },
-    "53": {
-        "id": 53,
+    "47": {
+        "id": 47,
         "min_latitude": 36.05848502,
         "max_latitude": 36.05860144,
         "min_longitude": 24.8808655,
         "max_longitude": 24.88092831
     },
-    "54": {
-        "id": 54,
+    "48": {
+        "id": 48,
         "min_latitude": 36.05409258,
         "max_latitude": 36.05421456,
         "min_longitude": 24.90806584,
         "max_longitude": 24.9081956
     },
-    "55": {
-        "id": 55,
+    "49": {
+        "id": 49,
         "min_latitude": 36.05838201,
         "max_latitude": 36.05849041,
         "min_longitude": 24.88541875,
         "max_longitude": 24.88556292
     },
-    "56": {
-        "id": 56,
+    "50": {
+        "id": 50,
         "min_latitude": 36.05842222,
         "max_latitude": 36.05853953,
         "min_longitude": 24.90094207,
         "max_longitude": 24.90110187
     },
-    "57": {
-        "id": 57,
-        "min_latitude": 36.07170644,
-        "max_latitude": 36.07192946,
-        "min_longitude": 24.86883686,
-        "max_longitude": 24.86918425
-    },
-    "58": {
-        "id": 58,
+    "51": {
+        "id": 51,
         "min_latitude": 36.06728803,
         "max_latitude": 36.06736745,
         "min_longitude": 24.87788423,
         "max_longitude": 24.87795559
     },
-    "59": {
-        "id": 59,
+    "52": {
+        "id": 52,
         "min_latitude": 36.08423126,
         "max_latitude": 36.08432477,
         "min_longitude": 24.85636909,
         "max_longitude": 24.8564637
     },
-    "60": {
-        "id": 60,
+    "53": {
+        "id": 53,
         "min_latitude": 36.07434876,
         "max_latitude": 36.07443715,
         "min_longitude": 24.84589546,

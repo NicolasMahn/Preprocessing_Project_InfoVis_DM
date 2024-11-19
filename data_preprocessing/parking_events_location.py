@@ -34,9 +34,9 @@ for car_id, events in data.items():
 stops_df = pd.DataFrame(stops)
 
 # Apply DBSCAN clustering with a smaller radius (eps)
-radius = 0.001  # Smaller radius
+radius = 0.0015# Smaller radius
 coords = stops_df[['latitude', 'longitude']].values
-db = DBSCAN(eps=radius, min_samples=3).fit(coords)
+db = DBSCAN(eps=radius, min_samples=10).fit(coords)
 stops_df['cluster'] = db.labels_
 
 # Filter out noise points (cluster label -1)
@@ -46,25 +46,34 @@ stops_df = stops_df[stops_df['cluster'] != -1]
 unique_cluster_ids = {cluster: idx for idx, cluster in enumerate(stops_df['cluster'].unique())}
 stops_df['unique_cluster_id'] = stops_df['cluster'].map(unique_cluster_ids)
 
-# Calculate the bounding box for each cluster
-cluster_bounding_boxes = {}
+# Calculate the bounding box for each cluster and save as polygons
+cluster_polygons = []
 for unique_id in stops_df['unique_cluster_id'].unique():
     cluster_points = stops_df[stops_df['unique_cluster_id'] == unique_id]
     min_lat = cluster_points['latitude'].min()
     max_lat = cluster_points['latitude'].max()
     min_lon = cluster_points['longitude'].min()
     max_lon = cluster_points['longitude'].max()
-    cluster_bounding_boxes[str(int(unique_id))] = {
-        'id': int(unique_id),
-        'min_latitude': float(min_lat),
-        'max_latitude': float(max_lat),
-        'min_longitude': float(min_lon),
-        'max_longitude': float(max_lon)
-    }
+    polygon = Polygon([
+        (min_lon, min_lat),
+        (min_lon, max_lat),
+        (max_lon, max_lat),
+        (max_lon, min_lat),
+        (min_lon, min_lat)
+    ])
+    cluster_polygons.append({
+        'type': 'Feature',
+        'properties': {'id': int(unique_id)},
+        'geometry': polygon.__geo_interface__
+    })
 
-# Save the bounding box data to a JSON file
-with open('../data/cluster_bounding_boxes.json', 'w') as outfile:
-    json.dump(cluster_bounding_boxes, outfile, indent=4)
+# Save the polygons to a GeoJSON file
+geojson_data = {
+    'type': 'FeatureCollection',
+    'features': cluster_polygons
+}
+with open('../data/cluster_polygons.geojson', 'w') as outfile:
+    json.dump(geojson_data, outfile, indent=4)
 
 # Save all data related to the points in the plot to a JSON file
 points_data = stops_df.to_dict(orient='records')
@@ -134,20 +143,29 @@ for geom, name in zip(gdf.geometry, gdf.Name):
 legend_patches = [mpatches.Patch(color=color, label=name) for name, color in color_map.items()]
 plt.legend(handles=legend_patches, title="Street Names")
 
-# Plot the clusters as polygons
+# Plot the clusters as polygons and add unique cluster IDs
 for unique_id in stops_df['unique_cluster_id'].unique():
     cluster_points = stops_df[stops_df['unique_cluster_id'] == unique_id]
     points = [Point(lon, lat) for lon, lat in zip(cluster_points['longitude'], cluster_points['latitude'])]
-    polygon = unary_union([point.buffer(0.001) for point in points])
+    polygon = unary_union([point.buffer(0.0015) for point in points])
     if isinstance(polygon, ShapelyPolygon):
         x, y = polygon.exterior.xy
         plt.fill(x, y, color='red', alpha=0.5)
+        centroid = polygon.centroid
+        plt.text(centroid.x, centroid.y, str(unique_id), fontsize=12, ha='center')
     elif isinstance(polygon, MultiPolygon):
         for poly in polygon:
             x, y = poly.exterior.xy
             plt.fill(x, y, color='red', alpha=0.5)
+            centroid = poly.centroid
+            plt.text(centroid.x, centroid.y, str(unique_id), fontsize=12, ha='center')
 
 plt.title('Clusters of Car Stops and Street Network')
 plt.xlabel('Longitude')
 plt.ylabel('Latitude')
+
+# Save the plot to the 'plots' directory
+plt.savefig('./plots/clusters_and_streets.png')
+# Save the plot to the 'plots' directory without background
+plt.savefig('./plots/clusters_and_streets_transparent.png', transparent=True)
 plt.show()

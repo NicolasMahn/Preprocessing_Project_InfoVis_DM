@@ -7,10 +7,10 @@ import json
 
 
 # Load the cc_location_data.csv file
-cc_data = pd.read_csv('../data/cc_location_data.csv')
+cc_data = pd.read_csv('../data/cc_location_data2.csv')
 
 # Load the stops_in_location_data.csv file
-stops_data = pd.read_csv('../data/stops_in_locations.csv')
+stops_data = pd.read_csv('../data/stops_in_locations2.csv')
 
 # Convert timestamps to datetime format with the correct format
 cc_data['timestamp'] = pd.to_datetime(cc_data['timestamp'], format='%Y-%m-%d %H:%M:%S', errors='coerce')
@@ -32,11 +32,11 @@ for _, stop in stops_data.iterrows():
         filtered_data.append({
             'last4ccnum': entry['last4ccnum'],
             'timestamp_purchase': entry['timestamp'],
-            'name_location': entry['name_location'],  # Ensure this column name matches the CSV file
+            'location': entry['location'],  # Ensure this column name matches the CSV file
             'car_id': stop['car_id'],
             'start_time_visit': stop['start_time'],
             'end_time_visit': stop['end_time'],
-            'location_name': stop['location_name'],
+            'location_name': stop['location'],
             'geometry': entry['geometry'],
         })
 
@@ -52,18 +52,18 @@ merged_data = pd.DataFrame(filtered_data)
 SIMILARITY_THRESHOLD = 80
 
 final_filtered_data = merged_data[
-    merged_data.apply(lambda row: ratio(row['name_location'], row['location_name']) >= SIMILARITY_THRESHOLD, axis=1)
+    merged_data.apply(lambda row: ratio(row['location'], row['location_name']) >= SIMILARITY_THRESHOLD, axis=1)
 ]
 
 final_filtered_data = final_filtered_data.drop(columns=['location_name'])
 
 # Save the filtered data to a new CSV file
-final_filtered_data.to_csv('../data/merged_card_car_data.csv', index=False)
+final_filtered_data.to_csv('../data/merged_card_car_data2.csv', index=False)
 
-print("Merged data saved to '../data/merged_card_car_data.csv'")
+print("Merged data saved to '../data/merged_card_car_data2.csv'")
 
 # Load the merged data
-merged_data = pd.read_csv('../data/merged_card_car_data.csv')
+merged_data = pd.read_csv('../data/merged_card_car_data2.csv')
 
 # Group by car_id and find the most common last4ccnum for each group along with its count
 most_common_cards = merged_data.groupby('car_id')['last4ccnum'].apply(lambda x: Counter(x).most_common(1)[0])
@@ -75,6 +75,6 @@ most_common_cards_df = pd.DataFrame([
 ])
 
 # Save the DataFrame to a CSV file
-most_common_cards_df.to_csv('../data/most_used_cards_filtered.csv', index=False)
+most_common_cards_df.to_csv('../data/most_used_cards_filtered2.csv', index=False)
 
-print("Filtered most used card data saved to '../data/most_used_cards_filtered.csv'")
+print("Filtered most used card data saved to '../data/most_used_cards_filtered2.csv'")
