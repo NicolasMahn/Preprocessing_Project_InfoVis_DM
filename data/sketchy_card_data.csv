@@ -145,6 +145,25 @@ date,location,price,last4ccnum,loyaltynum
 2014-01-17 19:40:00,Ouzeri Elian,38.6,6899,L6267
 2014-01-18 19:21:00,Ouzeri Elian,57.63,6899,L6267
 2014-01-19 19:48:00,Ouzeri Elian,67.98,6899,L6267
+2014-01-06 12:00:00,Jack's Magical Beans,18.59,9241,L3288
+2014-01-06 19:50:00,Frydos Autosupply n' More,273.87,9241,
+2014-01-07 12:00:00,Jack's Magical Beans,18.77,9241,L3288
+2014-01-07 20:15:00,Ouzeri Elian,11.41,9241,L3288
+2014-01-08 12:00:00,Jack's Magical Beans,18.78,9241,L3288
+2014-01-09 12:00:00,Jack's Magical Beans,12.13,9241,
+2014-01-09 19:43:00,Ouzeri Elian,31.07,9241,
+2014-01-10 12:00:00,Jack's Magical Beans,16.29,9241,L3288
+2014-01-10 13:35:00,Kalami Kafenion,101.5,9241,L3288
+2014-01-13 12:00:00,Jack's Magical Beans,5.22,9241,L3288
+2014-01-14 12:00:00,Jack's Magical Beans,63.36,9241,
+2014-01-14 20:41:00,Ouzeri Elian,24.06,9241,
+2014-01-15 12:00:00,Jack's Magical Beans,5.3,9241,L3288
+2014-01-15 19:18:00,Ouzeri Elian,28.86,9241,L3288
+2014-01-16 12:00:00,Jack's Magical Beans,14.86,9241,L3288
+2014-01-16 21:16:00,Ouzeri Elian,29.99,9241,L3288
+2014-01-17 12:00:00,Jack's Magical Beans,19.11,9241,L3288
+2014-01-17 20:07:00,Ouzeri Elian,70.21,9241,
+2014-01-19 13:26:00,Ahaggo Museum,26.91,9241,L3288
 2014-01-06 12:00:00,Jack's Magical Beans,27.84,8156,
 2014-01-06 12:57:00,Hippokampos,9.16,8156,
 2014-01-06 21:11:00,Hippokampos,28.14,8156,
@@ -179,28 +198,9 @@ date,location,price,last4ccnum,loyaltynum
 2014-01-18 15:40:00,Shoppers' Delight,258.33,8156,L5224
 2014-01-18 18:59:00,Albert's Fine Clothing,226.49,8156,L5224
 2014-01-19 12:41:00,Desafio Golf Course,150.07,8156,L5224
-2014-01-06 12:00:00,Jack's Magical Beans,18.59,9241,L3288
-2014-01-06 19:50:00,Frydos Autosupply n' More,273.87,9241,
-2014-01-07 12:00:00,Jack's Magical Beans,18.77,9241,L3288
-2014-01-07 20:15:00,Ouzeri Elian,11.41,9241,L3288
-2014-01-08 12:00:00,Jack's Magical Beans,18.78,9241,L3288
-2014-01-09 12:00:00,Jack's Magical Beans,12.13,9241,
-2014-01-09 19:43:00,Ouzeri Elian,31.07,9241,
-2014-01-10 12:00:00,Jack's Magical Beans,16.29,9241,L3288
-2014-01-10 13:35:00,Kalami Kafenion,101.5,9241,L3288
-2014-01-13 12:00:00,Jack's Magical Beans,5.22,9241,L3288
-2014-01-14 12:00:00,Jack's Magical Beans,63.36,9241,
-2014-01-14 20:41:00,Ouzeri Elian,24.06,9241,
-2014-01-15 12:00:00,Jack's Magical Beans,5.3,9241,L3288
-2014-01-15 19:18:00,Ouzeri Elian,28.86,9241,L3288
-2014-01-16 12:00:00,Jack's Magical Beans,14.86,9241,L3288
-2014-01-16 21:16:00,Ouzeri Elian,29.99,9241,L3288
-2014-01-17 12:00:00,Jack's Magical Beans,19.11,9241,L3288
-2014-01-17 20:07:00,Ouzeri Elian,70.21,9241,
-2014-01-19 13:26:00,Ahaggo Museum,26.91,9241,L3288
-2014-01-13 00:00:00,Guy's Gyros,28.57,,L3572
-2014-01-17 00:00:00,Brew've Been Served,11.04,,L3572
-2014-01-17 00:00:00,Shoppers' Delight,269.33,,L3572
+2014-01-06 00:00:00,Frydos Autosupply n' More,253.87,,L3288
+2014-01-14 00:00:00,Jack's Magical Beans,3.36,,L3288
+2014-01-17 00:00:00,Ouzeri Elian,10.21,,L3288
 2014-01-06 00:00:00,Abila Zacharo,26.93,,L9018
 2014-01-07 00:00:00,Coffee Cameleon,12.44,,L9018
 2014-01-09 00:00:00,Coffee Cameleon,4.88,,L9018
@@ -209,16 +209,6 @@ date,location,price,last4ccnum,loyaltynum
 2014-01-15 00:00:00,Katerina’s Café,28.56,,L9018
 2014-01-16 00:00:00,Coffee Cameleon,3.14,,L9018
 2014-01-17 00:00:00,Katerina’s Café,21.16,,L9018
-2014-01-06 00:00:00,Abila Zacharo,18.11,,L6544
-2014-01-06 00:00:00,Guy's Gyros,15.29,,L6544
-2014-01-06 00:00:00,Hallowed Grounds,12.22,,L6544
-2014-01-09 00:00:00,Hallowed Grounds,16.77,,L6544
-2014-01-10 00:00:00,Katerina’s Café,37.62,,L6544
-2014-01-13 00:00:00,Guy's Gyros,33.48,,L6544
-2014-01-14 00:00:00,Guy's Gyros,34.26,,L6544
-2014-01-14 00:00:00,Ouzeri Elian,22.3,,L6544
-2014-01-15 00:00:00,Kronos Mart,258.83,,L6544
-2014-01-17 00:00:00,General Grocer,78.03,,L6544
 2014-01-08 00:00:00,Kalami Kafenion,18.18,,L6267
 2014-01-09 00:00:00,Hallowed Grounds,16.72,,L6267
 2014-01-09 00:00:00,Katerina’s Café,30.97,,L6267
@@ -231,12 +221,22 @@ date,location,price,last4ccnum,loyaltynum
 2014-01-07 00:00:00,Jack's Magical Beans,3.68,,L6267
 2014-01-10 00:00:00,Abila Zacharo,33.33,,L6267
 2014-01-14 00:00:00,Jack's Magical Beans,13.32,,L6267
+2014-01-13 00:00:00,Guy's Gyros,28.57,,L3572
+2014-01-17 00:00:00,Brew've Been Served,11.04,,L3572
+2014-01-17 00:00:00,Shoppers' Delight,269.33,,L3572
+2014-01-06 00:00:00,Abila Zacharo,18.11,,L6544
+2014-01-06 00:00:00,Guy's Gyros,15.29,,L6544
+2014-01-06 00:00:00,Hallowed Grounds,12.22,,L6544
+2014-01-09 00:00:00,Hallowed Grounds,16.77,,L6544
+2014-01-10 00:00:00,Katerina’s Café,37.62,,L6544
+2014-01-13 00:00:00,Guy's Gyros,33.48,,L6544
+2014-01-14 00:00:00,Guy's Gyros,34.26,,L6544
+2014-01-14 00:00:00,Ouzeri Elian,22.3,,L6544
+2014-01-15 00:00:00,Kronos Mart,258.83,,L6544
+2014-01-17 00:00:00,General Grocer,78.03,,L6544
 2014-01-06 00:00:00,Jack's Magical Beans,7.84,,L5224
 2014-01-08 00:00:00,Ouzeri Elian,29.73,,L5224
 2014-01-13 00:00:00,Hippokampos,39.63,,L5224
 2014-01-14 00:00:00,Jack's Magical Beans,15.7,,L5224
 2014-01-15 00:00:00,Jack's Magical Beans,4.06,,L5224
 2014-01-19 00:00:00,Hippokampos,45.32,,L5224
-2014-01-06 00:00:00,Frydos Autosupply n' More,253.87,,L3288
-2014-01-14 00:00:00,Jack's Magical Beans,3.36,,L3288
-2014-01-17 00:00:00,Ouzeri Elian,10.21,,L3288
