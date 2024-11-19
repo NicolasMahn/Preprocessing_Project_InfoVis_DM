@@ -29,6 +29,8 @@ filtered_data = merged_data.dropna(subset=['geometry'])
 # Drop the location column
 filtered_data = filtered_data.drop(columns=['location'])
 
+filtered_data = filtered_data.rename(columns={'name': 'name_location'})
+
 # Save the filtered data to a new CSV file
 filtered_data.to_csv('../data/cc_location_data.csv', index=False)
 print("Filtered data saved to '../data/cc_location_data.csv'")

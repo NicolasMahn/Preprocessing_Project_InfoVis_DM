@@ -1,5 +1,6 @@
 import json
 import geopandas as gpd
+import pandas as pd
 from shapely.geometry import Point
 
 # Load the stops_per_car.json file
@@ -35,4 +36,12 @@ with open('../data/stops_in_locations.json', 'w') as output_file:
     json.dump(results, output_file, indent=4)
 
 print("Results saved to '../data/stops_in_locations.json'")
+
+# Convert the results to a DataFrame
+results_df = pd.DataFrame(results)
+
+# Save the results to a new CSV file
+results_df.to_csv('../data/stops_in_locations.csv', index=False)
+
+print("Results saved to '../data/stops_in_locations.csv'")
 

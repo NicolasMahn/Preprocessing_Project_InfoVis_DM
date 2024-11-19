@@ -2,7 +2,7 @@ import json
 from datetime import datetime
 
 
-def unify_date_format(input_file, output_file, target_format='%Y-%d-01 %H:%M:%S'):
+def unify_date_format(input_file, output_file, target_format='%Y-01-%d %H:%M:%S'):
     """
     Vereinheitlicht das Datumsformat in einer JSON-Datei.
 
@@ -13,7 +13,7 @@ def unify_date_format(input_file, output_file, target_format='%Y-%d-01 %H:%M:%S'
     """
     # Liste der möglichen Datumsformate
     possible_formats = [
-        '%Y-01-%d %H:%M:%S',
+        '%Y-%d-01 %H:%M:%S',
         '01/%d/%Y %H:%M:%S',
         '%d-01-%Y %H:%M:%S',
         '%d/01/%Y %H:%M:%S',
