@@ -7,6 +7,10 @@ with open('../data/gps_sorted_by_id_2.json', 'r') as file:
 
 result = {}
 
+# Function to calculate the difference between coordinates
+def coordinates_difference(coord1, coord2):
+    return abs(coord1[0] - coord2[0]) < 0.0001 and abs(coord1[1] - coord2[1]) < 0.0001
+
 # Iterate through each ID in the data
 for id_, entries in data.items():
     # Sort entries by timestamp
@@ -25,13 +29,17 @@ for id_, entries in data.items():
         time_difference = (current_time - previous_time).total_seconds()
 
         if time_difference > 180:  # More than 3 minutes
-            differences.append({
-                "start_time": previous_time.strftime('%Y-%m-%d %H:%M:%S'),
-                "end_time": current_time.strftime('%Y-%m-%d %H:%M:%S'),
-                "time_difference_sec": time_difference,
-                "start_coordinates": (previous_entry[1], previous_entry[2]),
-                "end_coordinates": (current_entry[1], current_entry[2])
-            })
+            start_coordinates = (previous_entry[1], previous_entry[2])
+            end_coordinates = (current_entry[1], current_entry[2])
+
+            if coordinates_difference(start_coordinates, end_coordinates):
+                differences.append({
+                    "start_time": previous_time.strftime('%Y-%m-%d %H:%M:%S'),
+                    "end_time": current_time.strftime('%Y-%m-%d %H:%M:%S'),
+                    "time_difference_sec": time_difference,
+                    "start_coordinates": start_coordinates,
+                    "end_coordinates": end_coordinates
+                })
 
     if differences:
         result[id_] = differences

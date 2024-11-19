@@ -1,6 +1,9 @@
+from itertools import count
+
 import pandas as pd
 from rapidfuzz.fuzz import ratio
 from collections import Counter
+import json
 
 
 # Load the cc_location_data.csv file
@@ -41,7 +44,7 @@ for _, stop in stops_data.iterrows():
 merged_data = pd.DataFrame(filtered_data)
 
 # Print the columns of the merged_data DataFrame
-print(merged_data)
+#print(merged_data)
 
 # Filter the merged data to keep only rows where the location names are similar
 
@@ -60,11 +63,18 @@ final_filtered_data.to_csv('../data/merged_card_car_data.csv', index=False)
 print("Merged data saved to '../data/merged_card_car_data.csv'")
 
 # Load the merged data
-merged_card_car_data = pd.read_csv('../data/merged_card_car_data.csv')
+merged_data = pd.read_csv('../data/merged_card_car_data.csv')
 
-# Group by car_id and find the most common last4ccnum for each group
-most_common_cards = merged_card_car_data.groupby('car_id')['last4ccnum'].apply(lambda x: Counter(x).most_common(1)[0][0])
+# Group by car_id and find the most common last4ccnum for each group along with its count
+most_common_cards = merged_data.groupby('car_id')['last4ccnum'].apply(lambda x: Counter(x).most_common(1)[0])
 
-# Print the results
-for car_id, last4ccnum in most_common_cards.items():
-    print(f"Car ID: {car_id}, Most Frequently Used Card: {last4ccnum}")
+# Convert the filtered results to a DataFrame
+most_common_cards_df = pd.DataFrame([
+    {'car_id': car_id, 'most_used_card': last4ccnum, 'count': count}
+    for car_id, (last4ccnum, count) in most_common_cards.items()
+])
+
+# Save the DataFrame to a CSV file
+most_common_cards_df.to_csv('../data/most_used_cards_filtered.csv', index=False)
+
+print("Filtered most used card data saved to '../data/most_used_cards_filtered.csv'")
