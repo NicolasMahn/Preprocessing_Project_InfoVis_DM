@@ -14,7 +14,7 @@ def main():
             "type": "creditcard",
             "locaton": row[1],
             "price": row[2],
-            "card": row[3],
+            "creditcard": row[3],
         }
         if timestamp not in time_dict:
             time_dict[timestamp] = [cc_dict]
@@ -22,6 +22,21 @@ def main():
             time_dict[timestamp].append(cc_dict)
 
     cleaned_card_data = load_data.open_csv_file("../data/cleaned_card_data.csv")
+    for row in cleaned_card_data[1]:
+        timestamp = row[0].timestamp()
+        cc_dict = {
+            "starttime": timestamp,
+            "endtime": timestamp,
+            "type": "pairs",
+            "locaton": row[1],
+            "price": row[2],
+            "creditcard": row[3],
+            "loyalty": row[4],
+        }
+        if timestamp not in time_dict:
+            time_dict[timestamp] = [cc_dict]
+        else:
+            time_dict[timestamp].append(cc_dict)
 
 
 
