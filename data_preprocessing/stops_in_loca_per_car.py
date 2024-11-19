@@ -24,6 +24,7 @@ for car_id, stops in stops_data.items():
                     "car_id": car_id,
                     "start_time": stop['start_time'],
                     "end_time": stop['end_time'],
+                    "duration_of_stop_min": stop['time_difference_sec']/60,
                     "location_name": location['name'],
                     "start_coordinates": stop['start_coordinates'],
                     "end_coordinates": stop['end_coordinates']
