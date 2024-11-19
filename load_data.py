@@ -19,7 +19,7 @@ def parse_value(value):
         pass
 
     # Try to parse as datetime (multiple formats)
-    for date_format in ["%m/%d/%Y %H:%M:%S", "%m/%d/%Y %H:%M", "%m/%d/%Y"]:
+    for date_format in ["%m/%d/%Y %H:%M:%S", "%m/%d/%Y %H:%M", "%m/%d/%Y", "%Y-%m-%d %H:%M:%S"]:
         try:
             return datetime.strptime(value, date_format)
         except ValueError:
@@ -56,3 +56,5 @@ def open_csv_file(data_source):
     else:
         print(f"Error: File '{data_source}' does not exist.")
         os._exit(1)
+
+
