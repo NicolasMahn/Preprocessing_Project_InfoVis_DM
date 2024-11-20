@@ -9,7 +9,7 @@ from PIL import Image
 from matplotlib.ticker import FixedLocator
 
 # Load GeoJSON data
-geojson_path = '../data/abila_2.geojson'
+geojson_path = '../../data/raw_data/abila_2.geojson'
 with open(geojson_path) as f:
     geojson_data = json.load(f)
 
@@ -50,7 +50,7 @@ for feature in geojson_data['features']:
 gdf = gpd.GeoDataFrame({'geometry': geometries, 'Name': street_names}, crs="EPSG:4326")
 
 # Get the dimensions of the image
-image_path = '../data/MC2-tourist.jpg'
+image_path = '../../data/raw_data/MC2-tourist.jpg'
 image = Image.open(image_path)
 width, height = image.size
 

@@ -7,10 +7,10 @@ import json
 
 
 # Load the cc_location_data.csv file
-cc_data = pd.read_csv('../data/cc_location_data2.csv')
+cc_data = pd.read_csv('../data/cc_data_location_cluster.csv')
 
 # Load the stops_in_location_data.csv file
-stops_data = pd.read_csv('../data/stops_in_locations2.csv')
+stops_data = pd.read_csv('../data/stops_in_location_cluster.csv')
 
 # Convert timestamps to datetime format with the correct format
 cc_data['timestamp'] = pd.to_datetime(cc_data['timestamp'], format='%Y-%m-%d %H:%M:%S', errors='coerce')
@@ -58,12 +58,12 @@ final_filtered_data = merged_data[
 final_filtered_data = final_filtered_data.drop(columns=['location_name'])
 
 # Save the filtered data to a new CSV file
-final_filtered_data.to_csv('../data/merged_card_car_data2.csv', index=False)
+final_filtered_data.to_csv('../data/merged_card_car_data_cluster.csv', index=False)
 
-print("Merged data saved to '../data/merged_card_car_data2.csv'")
+print("Merged data saved to '../data/merged_card_car_data_cluster.csv'")
 
 # Load the merged data
-merged_data = pd.read_csv('../data/merged_card_car_data2.csv')
+merged_data = pd.read_csv('../data/merged_card_car_data_cluster.csv')
 
 # Group by car_id and find the most common last4ccnum for each group along with its count
 most_common_cards = merged_data.groupby('car_id')['last4ccnum'].apply(lambda x: Counter(x).most_common(1)[0])
@@ -75,6 +75,6 @@ most_common_cards_df = pd.DataFrame([
 ])
 
 # Save the DataFrame to a CSV file
-most_common_cards_df.to_csv('../data/most_used_cards_filtered2.csv', index=False)
+most_common_cards_df.to_csv('../data/most_used_cards_per_car.csv', index=False)
 
-print("Filtered most used card data saved to '../data/most_used_cards_filtered2.csv'")
+print("Filtered most used card data saved to '../data/most_used_cards_per_car.csv'")

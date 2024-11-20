@@ -6,8 +6,8 @@ from datetime import datetime
 
 
 def get_gps_data_sorted_by_id():
-    original_gps_data_file = '../data/gps.csv'
-    gps_data_sorted_by_id_file = '../data/gps_sorted_by_id.json'
+    original_gps_data_file = '../data/raw_data/gps.csv'
+    gps_data_sorted_by_id_file = '../data/raw_data/gps_sorted_by_id.json'
 
     if os.path.exists(gps_data_sorted_by_id_file):
         return load_gps_data_sorted_by_id(gps_data_sorted_by_id_file)

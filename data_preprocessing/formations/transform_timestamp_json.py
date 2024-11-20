@@ -46,4 +46,4 @@ def unify_date_format(input_file, output_file, target_format='%Y-01-%d %H:%M:%S'
 
 
 # Beispielaufruf
-unify_date_format('../data/gps_sorted_by_id.json', '../data/gps_sorted_by_id_2.json')
+unify_date_format('../../data/raw_data/gps_sorted_by_id.json', '../data/gps_sorted_by_id_2.json')

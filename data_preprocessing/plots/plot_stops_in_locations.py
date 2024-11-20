@@ -4,7 +4,7 @@ import matplotlib.pyplot as plt
 from shapely.geometry import Point
 
 # Load the stops_in_locations.json file
-with open('../data/stops_in_locations.json', 'r') as file:
+with open('../../data/location_v1/stops_in_locations.json', 'r') as file:
     stops_data = json.load(file)
 
 # Create a list to store the stop points
@@ -29,7 +29,7 @@ fig, ax = plt.subplots(figsize=(10, 10))
 stops_gdf.plot(ax=ax, marker='o', color='red', markersize=5, label='Stops')
 
 # Optionally, plot the locations from locations.geojson
-locations_gdf = gpd.read_file('../data/locations.geojson')
+locations_gdf = gpd.read_file('../../data/location_v1/locations.geojson')
 locations_gdf.plot(ax=ax, facecolor='none', edgecolor='blue', linewidth=1, label='Locations')
 
 # Add a legend and title

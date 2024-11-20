@@ -3,7 +3,7 @@ import geopandas as gpd
 from shapely import wkt
 
 # Load the cc_data.csv file
-cc_data = pd.read_csv('../data/cc_data.csv')
+cc_data = pd.read_csv('../data/raw_data/cc_data.csv')
 
 # Convert timestamps to datetime format (MM/DD/YYYY HH:MM)
 cc_data['timestamp'] = pd.to_datetime(cc_data['timestamp'], format='%m/%d/%Y %H:%M', errors='coerce')
@@ -12,11 +12,11 @@ cc_data['timestamp'] = pd.to_datetime(cc_data['timestamp'], format='%m/%d/%Y %H:
 cc_data['timestamp'] = cc_data['timestamp'].apply(lambda x: x.replace(second=0) if pd.notnull(x) else x)
 
 # Save the updated data to a new CSV file
-cc_data.to_csv('../data/cc_data2.csv', index=False)
-print("Timestamps converted and saved to '../data/cc_data2.csv'")
+cc_data.to_csv('../data/raw_data/cc_data2.csv', index=False)
+print("Timestamps converted and saved to '../data/raw_data/cc_data2.csv'")
 
 # Reload the updated data
-cc_data2 = pd.read_csv('../data/cc_data2.csv')
+cc_data2 = pd.read_csv('../data/raw_data/cc_data2.csv')
 
 # Load the locations.csv file
 locations_df = pd.read_csv('../data/locations_with_clusters.csv')
@@ -39,5 +39,5 @@ filtered_data = filtered_data.drop(columns=['location_name'])
 #filtered_data = filtered_data.rename(columns={'name': 'name_location'})
 
 # Save the filtered data to a new CSV file
-filtered_data.to_csv('../data/cc_location_data2.csv', index=False)
-print("Filtered data saved to '../data/cc_location2_data.csv'")
+filtered_data.to_csv('../data/cc_data_location_cluster.csv', index=False)
+print("Filtered data saved to '../data/cc_data_location_cluster.csv'")

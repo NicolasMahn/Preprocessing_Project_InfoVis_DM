@@ -72,16 +72,11 @@ geojson_data = {
     'type': 'FeatureCollection',
     'features': cluster_polygons
 }
-with open('../data/cluster_polygons.geojson', 'w') as outfile:
+with open('../data/parking_event_cluster.geojson', 'w') as outfile:
     json.dump(geojson_data, outfile, indent=4)
 
-# Save all data related to the points in the plot to a JSON file
-points_data = stops_df.to_dict(orient='records')
-with open('../data/points_data.json', 'w') as outfile:
-    json.dump(points_data, outfile, indent=4)
-
 # Load GeoJSON data for streets
-geojson_path = '../data/abila_2.geojson'
+geojson_path = '../data/raw_data/abila_2.geojson'
 with open(geojson_path) as f:
     geojson_data = json.load(f)
 
@@ -160,12 +155,12 @@ for unique_id in stops_df['unique_cluster_id'].unique():
             centroid = poly.centroid
             plt.text(centroid.x, centroid.y, str(unique_id), fontsize=12, ha='center')
 
-plt.title('Clusters of Car Stops and Street Network')
+plt.title('Parking Event Clusters with Street Network')
 plt.xlabel('Longitude')
 plt.ylabel('Latitude')
 
 # Save the plot to the 'plots' directory
-plt.savefig('./plots/clusters_and_streets.png')
+plt.savefig('./plots/parking_event_clusters_with_streets.png')
 # Save the plot to the 'plots' directory without background
-plt.savefig('./plots/clusters_and_streets_transparent.png', transparent=True)
+plt.savefig('./plots/parking_event_clusters_with_streets_transparent.png', transparent=True)
 plt.show()

@@ -8,7 +8,7 @@ from shapely.geometry import shape, LineString, Polygon, MultiPolygon
 from matplotlib.ticker import FixedLocator
 
 # Load the first GeoJSON file
-geojson_path_1 = '../data/abila_2.geojson'
+geojson_path_1 = '../../data/raw_data/abila_2.geojson'
 with open(geojson_path_1) as f:
     geojson_data_1 = json.load(f)
 
@@ -17,7 +17,7 @@ desired_street_names = ["Rist Way", "Carnero St", "Barwyn St", "Arkadiou St", "A
                         "Pilau St", "Parla St", "Spetson St", "Taxiarchon Ave"]
 
 # Load the second GeoJSON file
-geojson_path_2 = '../data/locations.geojson'
+geojson_path_2 = '../../data/location_v1/locations.geojson'
 with open(geojson_path_2) as f:
     geojson_data_2 = json.load(f)
 
@@ -84,7 +84,7 @@ gdf_geojson_abila_street = gdf_geojson_abila_street.to_crs(gdf_geojson_abila_str
 gdf_geojson_locations = gdf_geojson_locations.to_crs(gdf_geojson_abila_street.crs)
 
 # Get the dimensions of the image
-image_path = '../data/MC2-tourist.jpg'
+image_path = '../../data/raw_data/MC2-tourist.jpg'
 image = Image.open(image_path)
 width, height = image.size
 

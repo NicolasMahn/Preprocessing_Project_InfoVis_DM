@@ -4,7 +4,7 @@ import contextily as ctx
 from shapely.geometry import Point
 
 # Load GeoJSON data
-geojson_path = '../data/abila_2.geojson'
+geojson_path = '../../data/raw_data/abila_2.geojson'
 gdf = gpd.read_file(geojson_path)
 
 # Plot the GeoDataFrame
