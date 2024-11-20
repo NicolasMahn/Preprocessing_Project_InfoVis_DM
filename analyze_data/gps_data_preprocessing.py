@@ -9,7 +9,7 @@ def get_gps_data_sorted_by_id():
     original_gps_data_file = '../data/gps.csv'
     gps_data_sorted_by_id_file = '../data/gps_sorted_by_id.json'
 
-    if os.path.exists(gps_data_sorted_by_id_file):
+    if os.path.exists(gps_data_sorted_by_id_file) and False:
         return load_gps_data_sorted_by_id(gps_data_sorted_by_id_file)
     else:
         sorted_gps_dict = create_gps_data_sorted_by_id(original_gps_data_file)
@@ -25,6 +25,17 @@ def create_gps_data_sorted_by_id(original_gps_data_file):
 
     # Loop through the gps_data and group by 'id'
     for entry in gps_data:
+        ids = list(range(36))
+        ids.remove(0)
+        ids.remove(31)
+        ids.append(101)
+        ids.append(104)
+        ids.append(107)
+        if entry[1] not in ids:
+            print(f"ID {entry[1]} not in list of IDs:   ", end="")
+            print(entry)
+        # else:
+        #    print(f"ID {entry[1]} in list of IDs")
         gps_dict[entry[1]].append([entry[0], entry[2], entry[3]])  # Exclude the id (index 1)
 
     return gps_dict

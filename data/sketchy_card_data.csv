@@ -1,42 +1,42 @@
 date,location,price,last4ccnum,loyaltynum
 2014-01-06 08:00:00,Hallowed Grounds,9.69,6691,
 2014-01-06 13:20:00,Hippokampos,34.03,6691,L6267
-2014-01-06 20:30:00,Katerina’s Café,28,6691,L6267
+2014-01-06 20:30:00,Katerina's Café,28,6691,
 2014-01-07 07:57:00,Hallowed Grounds,10.33,6691,L6267
 2014-01-07 13:57:00,Gelatogalore,15.4,6691,L6267
-2014-01-07 20:33:00,Katerina’s Café,25.54,6691,L6267
+2014-01-07 20:33:00,Katerina's Café,25.54,6691,
 2014-01-08 07:57:00,Hallowed Grounds,11.63,6691,L6267
 2014-01-08 20:28:00,Frydos Autosupply n' More,268.89,6691,L6267
 2014-01-09 14:03:00,Kalami Kafenion,35.99,6691,L6267
-2014-01-09 20:09:00,Katerina’s Café,90.97,6691,
+2014-01-09 20:09:00,Katerina's Café,90.97,6691,
 2014-01-10 08:06:00,Hallowed Grounds,9.34,6691,L6267
 2014-01-10 14:09:00,Abila Zacharo,9.32,6691,L6267
 2014-01-11 13:37:00,Hippokampos,82.23,6691,
-2014-01-11 19:32:00,Katerina’s Café,20.71,6691,L6267
+2014-01-11 19:32:00,Katerina's Café,20.71,6691,
 2014-01-13 07:57:00,Hallowed Grounds,6.32,6691,L6267
-2014-01-13 19:59:00,Katerina’s Café,30.84,6691,
+2014-01-13 19:59:00,Katerina's Café,30.84,6691,
 2014-01-14 08:16:00,Hallowed Grounds,6.16,6691,L6267
-2014-01-14 13:43:00,Katerina’s Café,31.69,6691,L6267
+2014-01-14 13:43:00,Katerina's Café,31.69,6691,
 2014-01-15 07:51:00,Hallowed Grounds,78.69,6691,
 2014-01-15 13:45:00,Guy's Gyros,12.19,6691,L6267
 2014-01-16 08:07:00,Hallowed Grounds,18.23,6691,L6267
 2014-01-16 13:35:00,Hippokampos,13.05,6691,L6267
 2014-01-17 07:59:00,Hallowed Grounds,5.52,6691,L6267
-2014-01-18 13:15:00,Katerina’s Café,34.54,6691,L6267
+2014-01-18 13:15:00,Katerina's Café,34.54,6691,
 2014-01-18 15:57:00,Albert's Fine Clothing,189.52,6691,L6267
-2014-01-18 19:36:00,Katerina’s Café,35.79,6691,
+2014-01-18 19:36:00,Katerina's Café,35.79,6691,
 2014-01-06 07:34:00,Hallowed Grounds,52.22,7108,
 2014-01-06 14:05:00,Abila Zacharo,78.11,7108,
 2014-01-06 20:28:00,Guy's Gyros,95.29,7108,
 2014-01-07 07:48:00,Hallowed Grounds,18.97,7108,L6544
 2014-01-07 13:46:00,Kalami Kafenion,22.14,7108,L6544
 2014-01-08 07:39:00,Hallowed Grounds,12.19,7108,
-2014-01-08 14:06:00,Katerina’s Café,22.94,7108,
+2014-01-08 14:06:00,Katerina's Café,22.94,7108,
 2014-01-08 21:00:00,General Grocer,265.84,7108,L6544
 2014-01-09 07:42:00,Hallowed Grounds,56.77,7108,
 2014-01-09 14:04:00,Ouzeri Elian,32.89,7108,L6544
 2014-01-10 07:50:00,Hallowed Grounds,10.76,7108,L6544
-2014-01-10 14:08:00,Katerina’s Café,77.62,7108,
+2014-01-10 14:08:00,Katerina's Café,77.62,7108,
 2014-01-10 20:20:00,Guy's Gyros,35.54,7108,
 2014-01-11 14:16:00,Kalami Kafenion,39.36,7108,L6544
 2014-01-11 20:30:00,Kalami Kafenion,46.78,7108,
@@ -76,7 +76,7 @@ date,location,price,last4ccnum,loyaltynum
 2014-01-14 08:03:00,Brew've Been Served,3.21,1286,L3572
 2014-01-14 13:59:00,Guy's Gyros,50.4,1286,L3288
 2014-01-15 07:49:00,Brew've Been Served,11.23,1286,L3572
-2014-01-15 13:27:00,Katerina’s Café,55.6,1286,L3288
+2014-01-15 13:27:00,Katerina's Café,55.6,1286,
 2014-01-15 21:05:00,Guy's Gyros,27.01,1286,L3572
 2014-01-16 07:52:00,Brew've Been Served,12.67,1286,L3572
 2014-01-16 13:22:00,Abila Zacharo,64.71,1286,L3288
@@ -89,38 +89,38 @@ date,location,price,last4ccnum,loyaltynum
 2014-01-19 19:45:00,Guy's Gyros,23.21,1286,L3288
 2014-01-06 08:14:00,Coffee Cameleon,3.2,2418,
 2014-01-06 13:18:00,Abila Zacharo,106.93,2418,
-2014-01-06 20:19:00,Katerina’s Café,21.66,2418,
+2014-01-06 20:19:00,Katerina's Café,21.66,2418,
 2014-01-07 08:01:00,Coffee Cameleon,52.44,2418,
 2014-01-07 13:44:00,Abila Zacharo,32.4,2418,L9018
 2014-01-08 08:22:00,Coffee Cameleon,16.17,2418,L9018
 2014-01-08 13:47:00,Gelatogalore,22.27,2418,L9018
 2014-01-08 20:07:00,Frydos Autosupply n' More,214.07,2418,L9018
 2014-01-09 13:29:00,Hippokampos,27.47,2418,L9018
-2014-01-09 20:38:00,Katerina’s Café,30.69,2418,
+2014-01-09 20:38:00,Katerina's Café,30.69,2418,
 2014-01-10 07:54:00,Coffee Cameleon,9.69,2418,L9018
-2014-01-10 13:38:00,Katerina’s Café,21.22,2418,L9018
-2014-01-11 13:23:00,Katerina’s Café,45.21,2418,L9018
+2014-01-10 13:38:00,Katerina's Café,21.22,2418,
+2014-01-11 13:23:00,Katerina's Café,45.21,2418,
 2014-01-11 15:20:00,Shoppers' Delight,238.52,2418,L9018
-2014-01-11 20:24:00,Katerina’s Café,94.68,2418,L9018
+2014-01-11 20:24:00,Katerina's Café,94.68,2418,
 2014-01-13 07:55:00,Coffee Cameleon,17.49,2418,L9018
-2014-01-13 13:23:00,Katerina’s Café,38.98,2418,L9018
+2014-01-13 13:23:00,Katerina's Café,38.98,2418,
 2014-01-13 21:11:00,Frydos Autosupply n' More,202.05,2418,L9018
 2014-01-14 07:52:00,Coffee Cameleon,11.67,2418,L9018
 2014-01-15 08:05:00,Coffee Cameleon,56.31,2418,
-2014-01-15 13:17:00,Katerina’s Café,88.56,2418,
-2014-01-15 20:29:00,Katerina’s Café,29.66,2418,L9018
+2014-01-15 13:17:00,Katerina's Café,88.56,2418,
+2014-01-15 20:29:00,Katerina's Café,29.66,2418,
 2014-01-16 08:03:00,Coffee Cameleon,63.14,2418,
 2014-01-16 14:00:00,Ouzeri Elian,8.52,2418,L9018
-2014-01-16 20:25:00,Katerina’s Café,35.43,2418,L9018
+2014-01-16 20:25:00,Katerina's Café,35.43,2418,
 2014-01-17 08:07:00,Coffee Cameleon,7.49,2418,L9018
 2014-01-17 13:16:00,Hippokampos,38.21,2418,L9018
-2014-01-18 19:56:00,Katerina’s Café,32.68,2418,L9018
+2014-01-18 19:56:00,Katerina's Café,32.68,2418,
 2014-01-06 12:00:00,Jack's Magical Beans,11.03,6899,L6267
-2014-01-06 13:46:00,Katerina’s Café,18.56,6899,L6267
+2014-01-06 13:46:00,Katerina's Café,18.56,6899,
 2014-01-07 12:00:00,Jack's Magical Beans,23.68,6899,
 2014-01-07 13:25:00,Abila Zacharo,82.25,6899,
 2014-01-08 12:00:00,Jack's Magical Beans,3.96,6899,L6267
-2014-01-08 13:28:00,Katerina’s Café,8.53,6899,L6267
+2014-01-08 13:28:00,Katerina's Café,8.53,6899,
 2014-01-08 21:17:00,Ouzeri Elian,29.85,6899,L6267
 2014-01-09 12:00:00,Jack's Magical Beans,10.11,6899,L6267
 2014-01-09 13:23:00,Gelatogalore,8.6,6899,L6267
@@ -131,7 +131,7 @@ date,location,price,last4ccnum,loyaltynum
 2014-01-11 19:21:00,Ouzeri Elian,69.36,6899,L6267
 2014-01-12 19:59:00,Ouzeri Elian,55.55,6899,L6267
 2014-01-13 12:00:00,Jack's Magical Beans,18.31,6899,L6267
-2014-01-13 13:34:00,Katerina’s Café,26.15,6899,L6267
+2014-01-13 13:34:00,Katerina's Café,26.15,6899,
 2014-01-14 08:20:00,Kronos Mart,58.85,6899,
 2014-01-14 13:41:00,Ouzeri Elian,79.58,6899,
 2014-01-14 20:32:00,Ouzeri Elian,11.86,6899,L6267
@@ -173,12 +173,12 @@ date,location,price,last4ccnum,loyaltynum
 2014-01-08 12:00:00,Jack's Magical Beans,12.37,8156,L5224
 2014-01-08 13:21:00,Ouzeri Elian,109.73,8156,
 2014-01-09 12:00:00,Jack's Magical Beans,15.55,8156,
-2014-01-09 13:27:00,Katerina’s Café,25.85,8156,L5224
+2014-01-09 13:27:00,Katerina's Café,25.85,8156,
 2014-01-09 21:12:00,Hippokampos,23.66,8156,L5224
 2014-01-10 12:00:00,Jack's Magical Beans,5.46,8156,L5224
 2014-01-10 13:12:00,Guy's Gyros,36.44,8156,L5224
 2014-01-10 21:17:00,Hippokampos,27,8156,
-2014-01-11 13:19:00,Katerina’s Café,45.22,8156,L5224
+2014-01-11 13:19:00,Katerina's Café,45.22,8156,
 2014-01-11 19:27:00,Albert's Fine Clothing,105.33,8156,L5224
 2014-01-12 03:39:00,Kronos Mart,277.26,8156,
 2014-01-12 13:32:00,Ouzeri Elian,117.22,8156,L5224
@@ -187,7 +187,7 @@ date,location,price,last4ccnum,loyaltynum
 2014-01-13 13:03:00,Gelatogalore,32.83,8156,L5224
 2014-01-13 21:27:00,Hippokampos,99.63,8156,
 2014-01-14 12:00:00,Jack's Magical Beans,95.7,8156,
-2014-01-14 13:14:00,Katerina’s Café,29.12,8156,L5224
+2014-01-14 13:14:00,Katerina's Café,29.12,8156,
 2014-01-15 12:00:00,Jack's Magical Beans,84.06,8156,
 2014-01-15 13:08:00,Kalami Kafenion,22.39,8156,L5224
 2014-01-15 21:42:00,Hippokampos,37.16,8156,L5224
@@ -198,32 +198,48 @@ date,location,price,last4ccnum,loyaltynum
 2014-01-18 15:40:00,Shoppers' Delight,258.33,8156,L5224
 2014-01-18 18:59:00,Albert's Fine Clothing,226.49,8156,L5224
 2014-01-19 12:41:00,Desafio Golf Course,150.07,8156,L5224
-2014-01-06 00:00:00,Frydos Autosupply n' More,253.87,,L3288
-2014-01-14 00:00:00,Jack's Magical Beans,3.36,,L3288
-2014-01-17 00:00:00,Ouzeri Elian,10.21,,L3288
+2014-01-13 00:00:00,Guy's Gyros,28.57,,L3572
+2014-01-17 00:00:00,Brew've Been Served,11.04,,L3572
+2014-01-17 00:00:00,Shoppers' Delight,269.33,,L3572
 2014-01-06 00:00:00,Abila Zacharo,26.93,,L9018
 2014-01-07 00:00:00,Coffee Cameleon,12.44,,L9018
 2014-01-09 00:00:00,Coffee Cameleon,4.88,,L9018
+2014-01-10 00:00:00,Katerina’s Café,21.22,,L9018
+2014-01-11 00:00:00,Katerina’s Café,45.21,,L9018
+2014-01-11 00:00:00,Katerina’s Café,94.68,,L9018
+2014-01-13 00:00:00,Katerina’s Café,38.98,,L9018
 2014-01-14 00:00:00,Katerina’s Café,11.26,,L9018
 2014-01-15 00:00:00,Coffee Cameleon,16.31,,L9018
 2014-01-15 00:00:00,Katerina’s Café,28.56,,L9018
+2014-01-15 00:00:00,Katerina’s Café,29.66,,L9018
 2014-01-16 00:00:00,Coffee Cameleon,3.14,,L9018
+2014-01-16 00:00:00,Katerina’s Café,35.43,,L9018
 2014-01-17 00:00:00,Katerina’s Café,21.16,,L9018
+2014-01-18 00:00:00,Katerina’s Café,32.68,,L9018
+2014-01-06 00:00:00,Frydos Autosupply n' More,253.87,,L3288
+2014-01-14 00:00:00,Jack's Magical Beans,3.36,,L3288
+2014-01-15 00:00:00,Katerina’s Café,55.6,,L3288
+2014-01-17 00:00:00,Ouzeri Elian,10.21,,L3288
+2014-01-06 00:00:00,Katerina’s Café,28,,L6267
+2014-01-07 00:00:00,Katerina’s Café,25.54,,L6267
 2014-01-08 00:00:00,Kalami Kafenion,18.18,,L6267
 2014-01-09 00:00:00,Hallowed Grounds,16.72,,L6267
 2014-01-09 00:00:00,Katerina’s Café,30.97,,L6267
 2014-01-11 00:00:00,Hippokampos,22.23,,L6267
+2014-01-11 00:00:00,Katerina’s Café,20.71,,L6267
+2014-01-14 00:00:00,Katerina’s Café,31.69,,L6267
 2014-01-14 00:00:00,Katerina’s Café,28.05,,L6267
 2014-01-15 00:00:00,Hallowed Grounds,18.69,,L6267
 2014-01-15 00:00:00,Katerina’s Café,36.8,,L6267
 2014-01-17 00:00:00,Hippokampos,23.54,,L6267
+2014-01-18 00:00:00,Katerina’s Café,34.54,,L6267
+2014-01-06 00:00:00,Katerina’s Café,18.56,,L6267
 2014-01-07 00:00:00,Abila Zacharo,22.25,,L6267
 2014-01-07 00:00:00,Jack's Magical Beans,3.68,,L6267
+2014-01-08 00:00:00,Katerina’s Café,8.53,,L6267
 2014-01-10 00:00:00,Abila Zacharo,33.33,,L6267
+2014-01-13 00:00:00,Katerina’s Café,26.15,,L6267
 2014-01-14 00:00:00,Jack's Magical Beans,13.32,,L6267
-2014-01-13 00:00:00,Guy's Gyros,28.57,,L3572
-2014-01-17 00:00:00,Brew've Been Served,11.04,,L3572
-2014-01-17 00:00:00,Shoppers' Delight,269.33,,L3572
 2014-01-06 00:00:00,Abila Zacharo,18.11,,L6544
 2014-01-06 00:00:00,Guy's Gyros,15.29,,L6544
 2014-01-06 00:00:00,Hallowed Grounds,12.22,,L6544
@@ -236,7 +252,10 @@ date,location,price,last4ccnum,loyaltynum
 2014-01-17 00:00:00,General Grocer,78.03,,L6544
 2014-01-06 00:00:00,Jack's Magical Beans,7.84,,L5224
 2014-01-08 00:00:00,Ouzeri Elian,29.73,,L5224
+2014-01-09 00:00:00,Katerina’s Café,25.85,,L5224
+2014-01-11 00:00:00,Katerina’s Café,45.22,,L5224
 2014-01-13 00:00:00,Hippokampos,39.63,,L5224
 2014-01-14 00:00:00,Jack's Magical Beans,15.7,,L5224
+2014-01-14 00:00:00,Katerina’s Café,29.12,,L5224
 2014-01-15 00:00:00,Jack's Magical Beans,4.06,,L5224
 2014-01-19 00:00:00,Hippokampos,45.32,,L5224

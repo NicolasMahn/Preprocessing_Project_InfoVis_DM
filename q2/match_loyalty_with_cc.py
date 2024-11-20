@@ -238,6 +238,8 @@ def main():
     numb_purchases_per_location_cc = get_purchases_per_location_original(cc_data)
     numb_purchases_per_location_loyalty = get_purchases_per_location_original(loyalty_data)
 
+    print(numb_purchases_per_location_loyalty)
+
     loyalty_cc_pairs, complex_pairs, no_pair_found_cc, no_pair_found_loyalty, simple_cards, sketchy_cards = (
         get_cc_loyalty_pairs(cc_data, loyalty_data))
 
@@ -341,6 +343,12 @@ def main():
 
 
         purchases_per_location_loyalty = numb_purchases_per_location_loyalty.get(location, 0)
+        if "Katerina" in location:
+            print(location)
+            for k, v in numb_purchases_per_location_loyalty.items():
+                if "Katerina" in k:
+                    purchases_per_location_loyalty = v
+            print(purchases_per_location_loyalty)
         avg_loyalty_amount = []
         for row in loyalty_data[1]:
             if row[0] == "date":
@@ -413,7 +421,7 @@ def main():
     mongo.delete_many({})
 
     mongo.insert_many([{"location": location, **data} for location, data in card_location_data.items()])
-    print(mongo.find_all())
+    print(mongo.find({"location": { "$regex": "Katerina^"}}))
 
 
 

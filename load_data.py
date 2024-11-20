@@ -25,18 +25,25 @@ def parse_value(value):
         except ValueError:
             continue
 
+    if 'â€™' in value:
+        value = value.replace('â€™', "'")
+    if 'â€œ' in value:
+        value = value.replace('â€œ', '"')
+    if 'Ã©' in value:
+        value = value.replace('Ã©', 'é')
+
     # If all parsing fails, return the original string
     return value
 
 
-def open_csv_file(data_source):
+def open_csv_file(data_source, encoding=None):
     points = list()
     original_indices = list()
     labels = list()
 
     # Open and read the CSV file
     if os.path.exists(data_source):
-        with open(data_source, mode='r', newline='') as file:
+        with open(data_source, mode='r', newline='', encoding=encoding) as file:
             reader = csv.reader(file)
 
             # Extract the first row as labels
