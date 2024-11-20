@@ -1,0 +1,27 @@
+car_id,most_used_card,count,LastName,FirstName,CurrentEmploymentType,CurrentEmploymentTitle
+1,9551,12,Calixto,Nils,Information Technology,IT Helpdesk
+5,6899,12,Baza,Isak,Information Technology,IT Technician
+6,7253,2,Bergen,Linnea,Information Technology,IT Group Manager
+7,2540,5,Orilla,Elsa,Engineering,Drill Technician
+8,7889,10,Alcazar,Lucas,Information Technology,IT Technician
+9,1877,2,Cazar,Gustav,Engineering,Drill Technician
+10,8332,4,Campo-Corrente,Ada,Executive,SVP/CIO
+12,7108,13,Cocinaro,Hideki,Security,Site Control
+13,7819,11,Ferro,Inga,Security,Site Control
+15,3853,8,Bodrogi,Loreto,Security,Site Control
+16,7354,10,Vann,Isia,Security,Perimeter Control
+20,6816,10,Fusil,Stenig,Security,Building Control
+21,9405,12,Osvaldo,Hennie,Security,Perimeter Control
+23,3484,12,Lagos,Varja,Security,Badging Office
+24,4434,9,Mies,Minke,Security,Perimeter Control
+25,2142,2,Herrero,Kanon,Engineering,Geologist
+26,1310,12,Onda,Marin,Engineering,Drill Site Manager
+27,3492,10,Orilla,Kare,Engineering,Drill Technician
+30,6901,13,Resumir,Felix,Security,Security Group Manager
+31,5010,3,Sanjorge Jr.,Sten,Executive,President/CEO
+33,9683,10,Tempestad,Brand,Engineering,Drill Technician
+34,4795,13,Vann,Edvard,Security,Perimeter Control
+35,7688,3,Vasco-Pais,Willem,Executive,Environmental Safety Advisor
+101,9220,4,,,,
+104,8642,15,,,,
+106,2276,6,,,,

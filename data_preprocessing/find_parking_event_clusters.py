@@ -15,17 +15,23 @@ from shapely.ops import unary_union
 with open('../data/stops_per_car.json', 'r') as file:
     data = json.load(file)
 
-# Extract coordinates of stops
+# Extract coordinates of stops with additional details
 stops = []
 for car_id, events in data.items():
     for event in events:
         stops.append({
             'car_id': car_id,
+            'start_time': event['start_time'],
+            'end_time': event['end_time'],
+            'time_difference_sec': event['time_difference_sec'],
             'latitude': event['start_coordinates'][0],
             'longitude': event['start_coordinates'][1]
         })
         stops.append({
             'car_id': car_id,
+            'start_time': event['start_time'],
+            'end_time': event['end_time'],
+            'time_difference_sec': event['time_difference_sec'],
             'latitude': event['end_coordinates'][0],
             'longitude': event['end_coordinates'][1]
         })
@@ -34,9 +40,9 @@ for car_id, events in data.items():
 stops_df = pd.DataFrame(stops)
 
 # Apply DBSCAN clustering with a smaller radius (eps)
-radius = 0.0015# Smaller radius
+radius = 0.0025  # Smaller radius
 coords = stops_df[['latitude', 'longitude']].values
-db = DBSCAN(eps=radius, min_samples=10).fit(coords)
+db = DBSCAN(eps=radius, min_samples=15).fit(coords)
 stops_df['cluster'] = db.labels_
 
 # Filter out noise points (cluster label -1)
@@ -45,6 +51,15 @@ stops_df = stops_df[stops_df['cluster'] != -1]
 # Assign unique IDs to each cluster
 unique_cluster_ids = {cluster: idx for idx, cluster in enumerate(stops_df['cluster'].unique())}
 stops_df['unique_cluster_id'] = stops_df['cluster'].map(unique_cluster_ids)
+
+# Save points for each cluster to a JSON file with additional details
+clusters = {}
+for unique_id in stops_df['unique_cluster_id'].unique():
+    cluster_points = stops_df[stops_df['unique_cluster_id'] == unique_id]
+    clusters[int(unique_id)] = cluster_points[['car_id', 'start_time', 'end_time', 'time_difference_sec', 'latitude', 'longitude']].to_dict(orient='records')
+
+with open('../data/carstops_in_cluster.json', 'w') as outfile:
+    json.dump(clusters, outfile, indent=4)
 
 # Calculate the bounding box for each cluster and save as polygons
 cluster_polygons = []
@@ -136,13 +151,13 @@ for geom, name in zip(gdf.geometry, gdf.Name):
 
 # Create legend
 legend_patches = [mpatches.Patch(color=color, label=name) for name, color in color_map.items()]
-plt.legend(handles=legend_patches, title="Street Names")
+plt.legend(handles=legend_patches, title="Street Names", loc="upper right")
 
 # Plot the clusters as polygons and add unique cluster IDs
 for unique_id in stops_df['unique_cluster_id'].unique():
     cluster_points = stops_df[stops_df['unique_cluster_id'] == unique_id]
     points = [Point(lon, lat) for lon, lat in zip(cluster_points['longitude'], cluster_points['latitude'])]
-    polygon = unary_union([point.buffer(0.0015) for point in points])
+    polygon = unary_union([point.buffer(0.0025) for point in points])
     if isinstance(polygon, ShapelyPolygon):
         x, y = polygon.exterior.xy
         plt.fill(x, y, color='red', alpha=0.5)
