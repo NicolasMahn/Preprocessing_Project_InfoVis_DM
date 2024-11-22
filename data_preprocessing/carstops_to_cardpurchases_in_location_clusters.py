@@ -60,7 +60,7 @@ def merge_car_card_data(card_data_name):
     final_filtered_data = final_filtered_data.drop(columns=['location_name'])
 
     # Save the filtered data to a new CSV file
-    final_filtered_data.to_csv('../data/merged_card_car_data_cluster.csv', index=False)
+    final_filtered_data.to_csv(f'../data/merged_{card_data_name}_car_data_cluster.csv', index=False)
 
     print(f"Merged data saved to '../data/merged_{card_data_name}_car_data_cluster.csv'")
 
@@ -96,5 +96,5 @@ def merge_car_card_data(card_data_name):
         print(f"Filtered most used card data saved to '../data/most_used_loyalty_in_{card_data_name}_per_car.csv'")
 
 merge_car_card_data('cc_data')
-merge_car_card_data('loyalty_data')
+# merge_car_card_data('loyalty_data')
 merge_car_card_data('cleaned_card_data')
