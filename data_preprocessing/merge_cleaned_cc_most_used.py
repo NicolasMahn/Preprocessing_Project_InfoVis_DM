@@ -27,10 +27,18 @@ for row in merged_data_ccd.iterrows():
     else:
         most_common_cc[row[1][4]][row[1][1]] += 1
 
-
+most_common_cc_per_car = {}
 for car, ccs in most_common_cc.items():
     sorted_ccs = dict(sorted(ccs.items(), key=lambda item: item[1], reverse=True))
     print(f"{car}: {sorted_ccs}")
+
+    most_common_cc_per_car[car] = sorted_ccs
+
+import json
+
+with open('../data/most_common_cc_per_car.json', 'w') as f:
+    json.dump(most_common_cc_per_car, f, indent=4)
+
 
 # find if there is a card overlap of the most common card over all cars
 cards = dict()
@@ -57,4 +65,3 @@ for card, data in cards.items():
 
 for car in cars:
     print(f"{car}: {cars[car]}")
-
