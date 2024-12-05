@@ -1,5 +1,6 @@
 import json
 import pandas as pd
+import matplotlib.pyplot as plt
 
 # Load the JSON file
 with open('../data/stops_in_location_clusters_employee.json', 'r') as file:
@@ -32,18 +33,19 @@ def has_overlap(group):
                 continue
             overlap = (row1['start_time'] < row2['end_time'] and row2['start_time'] < row1['end_time'])
             overlap_duration = min(row1['end_time'], row2['end_time']) - max(row1['start_time'], row2['start_time'])
-            if overlap and overlap_duration.total_seconds() >= 600:  # Minimum 5 minutes overlap
+            if overlap and overlap_duration.total_seconds() >= 300:  # Minimum 5 minutes overlap
                 return True
     return False
 
-# Helper function to check if a cluster repeats
-def cluster_repeats(cluster, all_clusters):
+# Helper function to count repetitions of a cluster
+def count_cluster_repetitions(cluster, all_clusters):
     cluster_set = frozenset([entry['car_id'] for entry in cluster])
+    count = 0
     for other_cluster in all_clusters:
         other_cluster_set = frozenset([entry['car_id'] for entry in other_cluster])
         if cluster_set == other_cluster_set:
-            return True
-    return False
+            count += 1
+    return count
 
 # Group by location and filter clusters with at least 2 overlapping entries
 grouped = df.groupby('location')
@@ -53,6 +55,9 @@ all_clusters = []
 cluster_id_counter = 1
 
 for location, group in grouped:
+    if location == "Gastech":
+        continue
+
     group = group.sort_values(by='start_time')
     overlapping_entries = []
 
@@ -85,7 +90,9 @@ for location, group in grouped:
             })
 
         cluster_key = frozenset([entry['car_id'] for entry in overlapping_entries])
-        if cluster_key not in seen_clusters and not cluster_repeats(cluster, all_clusters):
+        repetitions = count_cluster_repetitions(cluster, all_clusters)
+
+        if cluster_key not in seen_clusters:
             seen_clusters.add(cluster_key)
             all_clusters.append(cluster)
             result.append({
@@ -95,6 +102,40 @@ for location, group in grouped:
             })
             cluster_id_counter += 1
 
-# Save the result to a JSON file
+# Save the results to JSON files
 with open('../data/stops_same_location_time_employee.json', 'w') as outfile:
     json.dump(result, outfile, indent=4)
+
+# Export data for frontend use
+map_data = []
+for cluster in result:
+    for entry in cluster['cluster']:
+        map_data.append({
+            'cluster_id': cluster['cluster_id'],
+            'latitude': entry['latitude'],
+            'longitude': entry['longitude'],
+            'car_id': entry['car_id'],
+            'start_time': entry['start_time'],
+            'end_time': entry['end_time'],
+            'location': cluster['location']
+        })
+
+# Save map data for frontend
+with open('../data/map_data.json', 'w') as map_file:
+    json.dump(map_data, map_file, indent=4)
+
+# Plotting the clusters
+latitudes = [entry['latitude'] for entry in map_data]
+longitudes = [entry['longitude'] for entry in map_data]
+cluster_ids = [entry['cluster_id'] for entry in map_data]
+
+plt.figure(figsize=(10, 6))
+plt.scatter(longitudes, latitudes, c=cluster_ids, cmap='viridis', s=50, alpha=0.7, edgecolors='k')
+plt.colorbar(label='Cluster ID')
+plt.xlabel('Longitude')
+plt.ylabel('Latitude')
+plt.title('Cluster Visualization')
+plt.grid(True)
+plt.show()
+
+print("Daten wurden erfolgreich verarbeitet und für das Frontend exportiert.")
