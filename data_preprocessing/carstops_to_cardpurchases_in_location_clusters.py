@@ -1,3 +1,4 @@
+# identify the card purchases that were made in the same location as the car stops
 from itertools import count
 
 import pandas as pd
