@@ -22,7 +22,7 @@ def card_data_to_location_cluster(data_name, file_path='../data/raw_data/'):
     data2 = pd.read_csv(f'{file_path}{data_name}2.csv')
 
     # Load the locations.csv file
-    locations_df = pd.read_csv('../data/locations_with_clusters.csv')
+    locations_df = pd.read_csv('../data/locations_cluster_geometry.csv')
 
     # Convert the 'geometry' column to shapely geometries
     locations_df['geometry'] = locations_df['geometry'].apply(wkt.loads)

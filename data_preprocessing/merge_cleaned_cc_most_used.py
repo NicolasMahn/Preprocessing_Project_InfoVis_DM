@@ -1,3 +1,4 @@
+# find the most common credit card used for each car and the most common credit card used overall
 import pandas as pd
 from collections import Counter
 

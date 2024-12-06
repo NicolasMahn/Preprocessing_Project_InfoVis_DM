@@ -1,3 +1,6 @@
+# Step 2:
+# clustering the stops per car on a radius to find parking events
+# plot with clusters and abila streetmap as background
 import json
 import matplotlib.pyplot as plt
 import pandas as pd
@@ -58,7 +61,7 @@ for unique_id in stops_df['unique_cluster_id'].unique():
     cluster_points = stops_df[stops_df['unique_cluster_id'] == unique_id]
     clusters[int(unique_id)] = cluster_points[['car_id', 'start_time', 'end_time', 'time_difference_sec', 'latitude', 'longitude']].to_dict(orient='records')
 
-with open('../data/carstops_in_cluster.json', 'w') as outfile:
+with open('../data/stops_in_parking_event_clusters.json', 'w') as outfile:
     json.dump(clusters, outfile, indent=4)
 
 # Calculate the bounding box for each cluster and save as polygons
@@ -87,7 +90,7 @@ geojson_data = {
     'type': 'FeatureCollection',
     'features': cluster_polygons
 }
-with open('../data/parking_event_cluster.geojson', 'w') as outfile:
+with open('../data/parking_event_cluster_geometry.geojson', 'w') as outfile:
     json.dump(geojson_data, outfile, indent=4)
 
 # Load GeoJSON data for streets

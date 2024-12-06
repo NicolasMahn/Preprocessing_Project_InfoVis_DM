@@ -1,0 +1,524 @@
+[
+    {
+        "cluster_id": 1,
+        "latitude": 36.07667101,
+        "longitude": 24.85759425,
+        "car_id": "9",
+        "start_time": "2014-01-06 12:17:27",
+        "end_time": "2014-01-06 13:59:01",
+        "location": "Albert's Fine Clothing"
+    },
+    {
+        "cluster_id": 1,
+        "latitude": 36.07666045,
+        "longitude": 24.85761329,
+        "car_id": "32",
+        "start_time": "2014-01-06 12:21:27",
+        "end_time": "2014-01-06 13:01:01",
+        "location": "Albert's Fine Clothing"
+    },
+    {
+        "cluster_id": 1,
+        "latitude": 36.0766721,
+        "longitude": 24.85756627,
+        "car_id": "34",
+        "start_time": "2014-01-06 12:23:27",
+        "end_time": "2014-01-06 13:24:01",
+        "location": "Albert's Fine Clothing"
+    },
+    {
+        "cluster_id": 1,
+        "latitude": 36.07666279,
+        "longitude": 24.85759134,
+        "car_id": "1",
+        "start_time": "2014-01-06 12:26:27",
+        "end_time": "2014-01-06 13:25:01",
+        "location": "Albert's Fine Clothing"
+    },
+    {
+        "cluster_id": 2,
+        "latitude": 36.08172261,
+        "longitude": 24.85087373,
+        "car_id": "19",
+        "start_time": "2014-01-06 06:57:01",
+        "end_time": "2014-01-06 07:40:01",
+        "location": "Bean There Done That"
+    },
+    {
+        "cluster_id": 2,
+        "latitude": 36.08174553,
+        "longitude": 24.85095841,
+        "car_id": "11",
+        "start_time": "2014-01-06 07:05:32",
+        "end_time": "2014-01-06 07:50:01",
+        "location": "Bean There Done That"
+    },
+    {
+        "cluster_id": 2,
+        "latitude": 36.08181648,
+        "longitude": 24.85094659,
+        "car_id": "3",
+        "start_time": "2014-01-06 07:22:48",
+        "end_time": "2014-01-06 07:47:01",
+        "location": "Bean There Done That"
+    },
+    {
+        "cluster_id": 2,
+        "latitude": 36.08179517,
+        "longitude": 24.8509318,
+        "car_id": "2",
+        "start_time": "2014-01-06 07:34:22",
+        "end_time": "2014-01-06 08:11:01",
+        "location": "Bean There Done That"
+    },
+    {
+        "cluster_id": 3,
+        "latitude": 36.05407865,
+        "longitude": 24.90118424,
+        "car_id": "34",
+        "start_time": "2014-01-06 07:07:48",
+        "end_time": "2014-01-06 07:35:01",
+        "location": "Brew've Been Served"
+    },
+    {
+        "cluster_id": 3,
+        "latitude": 36.05411139,
+        "longitude": 24.90121759,
+        "car_id": "17",
+        "start_time": "2014-01-06 07:07:53",
+        "end_time": "2014-01-06 07:50:01",
+        "location": "Brew've Been Served"
+    },
+    {
+        "cluster_id": 3,
+        "latitude": 36.05404998,
+        "longitude": 24.90118525,
+        "car_id": "16",
+        "start_time": "2014-01-06 07:17:36",
+        "end_time": "2014-01-06 08:01:01",
+        "location": "Brew've Been Served"
+    },
+    {
+        "cluster_id": 3,
+        "latitude": 36.05408312,
+        "longitude": 24.90122407,
+        "car_id": "20",
+        "start_time": "2014-01-06 07:18:35",
+        "end_time": "2014-01-06 07:39:01",
+        "location": "Brew've Been Served"
+    },
+    {
+        "cluster_id": 3,
+        "latitude": 36.05412583,
+        "longitude": 24.90116992,
+        "car_id": "21",
+        "start_time": "2014-01-06 07:26:36",
+        "end_time": "2014-01-06 07:55:01",
+        "location": "Brew've Been Served"
+    },
+    {
+        "cluster_id": 3,
+        "latitude": 36.05410986,
+        "longitude": 24.9012369,
+        "car_id": "13",
+        "start_time": "2014-01-06 07:29:36",
+        "end_time": "2014-01-06 08:03:01",
+        "location": "Brew've Been Served"
+    },
+    {
+        "cluster_id": 3,
+        "latitude": 36.05405739,
+        "longitude": 24.90123022,
+        "car_id": "33",
+        "start_time": "2014-01-06 07:30:53",
+        "end_time": "2014-01-06 07:46:01",
+        "location": "Brew've Been Served"
+    },
+    {
+        "cluster_id": 3,
+        "latitude": 36.05405606,
+        "longitude": 24.9011923,
+        "car_id": "24",
+        "start_time": "2014-01-06 07:44:53",
+        "end_time": "2014-01-06 08:07:01",
+        "location": "Brew've Been Served"
+    },
+    {
+        "cluster_id": 3,
+        "latitude": 36.05404434,
+        "longitude": 24.9012306,
+        "car_id": "23",
+        "start_time": "2014-01-06 07:45:23",
+        "end_time": "2014-01-06 07:56:01",
+        "location": "Brew've Been Served"
+    },
+    {
+        "cluster_id": 3,
+        "latitude": 36.05406564,
+        "longitude": 24.90125059,
+        "car_id": "30",
+        "start_time": "2014-01-06 07:46:23",
+        "end_time": "2014-01-06 08:14:01",
+        "location": "Brew've Been Served"
+    },
+    {
+        "cluster_id": 3,
+        "latitude": 36.0540644,
+        "longitude": 24.90122427,
+        "car_id": "15",
+        "start_time": "2014-01-06 07:48:36",
+        "end_time": "2014-01-06 08:14:01",
+        "location": "Brew've Been Served"
+    },
+    {
+        "cluster_id": 3,
+        "latitude": 36.05403527,
+        "longitude": 24.90123671,
+        "car_id": "22",
+        "start_time": "2014-01-06 08:06:23",
+        "end_time": "2014-01-06 08:17:01",
+        "location": "Brew've Been Served"
+    },
+    {
+        "cluster_id": 4,
+        "latitude": 36.05979491,
+        "longitude": 24.85797594,
+        "car_id": "6",
+        "start_time": "2014-01-06 12:07:16",
+        "end_time": "2014-01-06 13:25:01",
+        "location": "Carly's Coffee"
+    },
+    {
+        "cluster_id": 4,
+        "latitude": 36.05979141,
+        "longitude": 24.85803821,
+        "car_id": "13",
+        "start_time": "2014-01-06 12:15:16",
+        "end_time": "2014-01-06 14:11:01",
+        "location": "Carly's Coffee"
+    },
+    {
+        "cluster_id": 4,
+        "latitude": 36.05977523,
+        "longitude": 24.85799825,
+        "car_id": "27",
+        "start_time": "2014-01-06 12:23:16",
+        "end_time": "2014-01-06 14:02:01",
+        "location": "Carly's Coffee"
+    },
+    {
+        "cluster_id": 4,
+        "latitude": 36.05970718,
+        "longitude": 24.85801667,
+        "car_id": "8",
+        "start_time": "2014-01-06 12:24:16",
+        "end_time": "2014-01-06 13:50:01",
+        "location": "Carly's Coffee"
+    },
+    {
+        "cluster_id": 5,
+        "latitude": 36.07071981,
+        "longitude": 24.89527846,
+        "car_id": "33",
+        "start_time": "2014-01-08 11:09:07",
+        "end_time": "2014-01-08 13:21:01",
+        "location": "Chostus Hotel"
+    },
+    {
+        "cluster_id": 5,
+        "latitude": 36.07073518,
+        "longitude": 24.89523466,
+        "car_id": "7",
+        "start_time": "2014-01-08 11:17:07",
+        "end_time": "2014-01-08 13:01:01",
+        "location": "Chostus Hotel"
+    },
+    {
+        "cluster_id": 6,
+        "latitude": 36.05468599,
+        "longitude": 24.88982134,
+        "car_id": "6",
+        "start_time": "2014-01-06 07:20:42",
+        "end_time": "2014-01-06 07:51:01",
+        "location": "Coffee Chameleon"
+    },
+    {
+        "cluster_id": 6,
+        "latitude": 36.05468548,
+        "longitude": 24.88982376,
+        "car_id": "29",
+        "start_time": "2014-01-06 07:24:29",
+        "end_time": "2014-01-06 07:56:07",
+        "location": "Coffee Chameleon"
+    },
+    {
+        "cluster_id": 6,
+        "latitude": 36.05466363,
+        "longitude": 24.88983269,
+        "car_id": "25",
+        "start_time": "2014-01-06 07:45:42",
+        "end_time": "2014-01-06 07:55:01",
+        "location": "Coffee Chameleon"
+    },
+    {
+        "cluster_id": 7,
+        "latitude": 36.07524082,
+        "longitude": 24.85631656,
+        "car_id": "24",
+        "start_time": "2014-01-06 18:49:03",
+        "end_time": "2014-01-06 21:04:01",
+        "location": "Coffee Shack"
+    },
+    {
+        "cluster_id": 7,
+        "latitude": 36.07528409,
+        "longitude": 24.85631951,
+        "car_id": "1",
+        "start_time": "2014-01-06 19:49:01",
+        "end_time": "2014-01-06 20:27:01",
+        "location": "Coffee Shack"
+    },
+    {
+        "cluster_id": 8,
+        "latitude": 36.08954006,
+        "longitude": 24.86068035,
+        "car_id": "35",
+        "start_time": "2014-01-12 12:49:17",
+        "end_time": "2014-01-12 16:22:01",
+        "location": "Desafio Golf Course"
+    },
+    {
+        "cluster_id": 8,
+        "latitude": 36.08960158,
+        "longitude": 24.86069606,
+        "car_id": "10",
+        "start_time": "2014-01-12 13:26:35",
+        "end_time": "2014-01-12 16:12:01",
+        "location": "Desafio Golf Course"
+    },
+    {
+        "cluster_id": 9,
+        "latitude": 36.06038292,
+        "longitude": 24.90560128,
+        "car_id": "15",
+        "start_time": "2014-01-06 17:26:46",
+        "end_time": "2014-01-07 03:20:01",
+        "location": "Frydo's Autosupply n' More"
+    },
+    {
+        "cluster_id": 9,
+        "latitude": 36.06036198,
+        "longitude": 24.90561127,
+        "car_id": "16",
+        "start_time": "2014-01-06 18:07:01",
+        "end_time": "2014-01-06 19:29:01",
+        "location": "Frydo's Autosupply n' More"
+    },
+    {
+        "cluster_id": 9,
+        "latitude": 36.06035588,
+        "longitude": 24.90561931,
+        "car_id": "13",
+        "start_time": "2014-01-06 20:30:05",
+        "end_time": "2014-01-07 07:37:01",
+        "location": "Frydo's Autosupply n' More"
+    },
+    {
+        "cluster_id": 9,
+        "latitude": 36.06036892,
+        "longitude": 24.90561205,
+        "car_id": "21",
+        "start_time": "2014-01-06 20:34:45",
+        "end_time": "2014-01-07 07:44:01",
+        "location": "Frydo's Autosupply n' More"
+    },
+    {
+        "cluster_id": 10,
+        "latitude": 36.05844825,
+        "longitude": 24.90099592,
+        "car_id": "23",
+        "start_time": "2014-01-06 17:36:50",
+        "end_time": "2014-01-06 18:45:01",
+        "location": "Guy's Gyros"
+    },
+    {
+        "cluster_id": 10,
+        "latitude": 36.05842868,
+        "longitude": 24.90100909,
+        "car_id": "22",
+        "start_time": "2014-01-06 17:57:16",
+        "end_time": "2014-01-07 07:29:01",
+        "location": "Guy's Gyros"
+    },
+    {
+        "cluster_id": 10,
+        "latitude": 36.05845679,
+        "longitude": 24.90105528,
+        "car_id": "30",
+        "start_time": "2014-01-06 20:13:01",
+        "end_time": "2014-01-07 07:37:01",
+        "location": "Guy's Gyros"
+    },
+    {
+        "cluster_id": 10,
+        "latitude": 36.05853075,
+        "longitude": 24.90098797,
+        "car_id": "23",
+        "start_time": "2014-01-06 20:21:01",
+        "end_time": "2014-01-07 07:45:01",
+        "location": "Guy's Gyros"
+    },
+    {
+        "cluster_id": 11,
+        "latitude": 36.06363867,
+        "longitude": 24.88592673,
+        "car_id": "12",
+        "start_time": "2014-01-06 07:11:16",
+        "end_time": "2014-01-06 07:44:01",
+        "location": "Hallowed Grounds"
+    },
+    {
+        "cluster_id": 11,
+        "latitude": 36.06367562,
+        "longitude": 24.88593949,
+        "car_id": "18",
+        "start_time": "2014-01-06 07:14:46",
+        "end_time": "2014-01-06 07:41:01",
+        "location": "Hallowed Grounds"
+    },
+    {
+        "cluster_id": 11,
+        "latitude": 36.0636368,
+        "longitude": 24.88592975,
+        "car_id": "26",
+        "start_time": "2014-01-06 07:22:40",
+        "end_time": "2014-01-06 07:38:01",
+        "location": "Hallowed Grounds"
+    },
+    {
+        "cluster_id": 11,
+        "latitude": 36.063708,
+        "longitude": 24.8859479,
+        "car_id": "14",
+        "start_time": "2014-01-06 07:29:46",
+        "end_time": "2014-01-06 08:06:01",
+        "location": "Hallowed Grounds"
+    },
+    {
+        "cluster_id": 11,
+        "latitude": 36.06362554,
+        "longitude": 24.88595509,
+        "car_id": "27",
+        "start_time": "2014-01-06 07:36:26",
+        "end_time": "2014-01-06 07:52:01",
+        "location": "Hallowed Grounds"
+    },
+    {
+        "cluster_id": 11,
+        "latitude": 36.06371314,
+        "longitude": 24.88594087,
+        "car_id": "8",
+        "start_time": "2014-01-06 07:37:14",
+        "end_time": "2014-01-06 07:59:01",
+        "location": "Hallowed Grounds"
+    },
+    {
+        "cluster_id": 12,
+        "latitude": 36.05194419,
+        "longitude": 24.87078805,
+        "car_id": "7",
+        "start_time": "2014-01-06 11:48:05",
+        "end_time": "2014-01-06 13:30:01",
+        "location": "Ouzeri Elian"
+    },
+    {
+        "cluster_id": 12,
+        "latitude": 36.05194707,
+        "longitude": 24.87081288,
+        "car_id": "33",
+        "start_time": "2014-01-06 11:49:05",
+        "end_time": "2014-01-06 13:26:01",
+        "location": "Ouzeri Elian"
+    },
+    {
+        "cluster_id": 12,
+        "latitude": 36.05195249,
+        "longitude": 24.87079051,
+        "car_id": "20",
+        "start_time": "2014-01-06 11:55:05",
+        "end_time": "2014-01-06 13:44:01",
+        "location": "Ouzeri Elian"
+    },
+    {
+        "cluster_id": 12,
+        "latitude": 36.051935,
+        "longitude": 24.87081176,
+        "car_id": "19",
+        "start_time": "2014-01-06 12:00:01",
+        "end_time": "2014-01-06 13:53:01",
+        "location": "Ouzeri Elian"
+    },
+    {
+        "cluster_id": 12,
+        "latitude": 36.05195503,
+        "longitude": 24.87077613,
+        "car_id": "101",
+        "start_time": "2014-01-06 12:09:07",
+        "end_time": "2014-01-06 13:12:01",
+        "location": "Ouzeri Elian"
+    },
+    {
+        "cluster_id": 12,
+        "latitude": 36.05195173,
+        "longitude": 24.87077909,
+        "car_id": "29",
+        "start_time": "2014-01-06 12:40:26",
+        "end_time": "2014-01-06 13:51:42",
+        "location": "Ouzeri Elian"
+    },
+    {
+        "cluster_id": 13,
+        "latitude": 36.06346453,
+        "longitude": 24.85101132,
+        "car_id": "16",
+        "start_time": "2014-01-06 11:54:17",
+        "end_time": "2014-01-06 13:40:01",
+        "location": "Roberts and Sons"
+    },
+    {
+        "cluster_id": 13,
+        "latitude": 36.06346565,
+        "longitude": 24.85101771,
+        "car_id": "22",
+        "start_time": "2014-01-06 12:21:17",
+        "end_time": "2014-01-06 13:28:01",
+        "location": "Roberts and Sons"
+    },
+    {
+        "cluster_id": 13,
+        "latitude": 36.06344216,
+        "longitude": 24.85099869,
+        "car_id": "12",
+        "start_time": "2014-01-06 12:36:17",
+        "end_time": "2014-01-06 14:12:01",
+        "location": "Roberts and Sons"
+    },
+    {
+        "cluster_id": 13,
+        "latitude": 36.06338067,
+        "longitude": 24.85103902,
+        "car_id": "4",
+        "start_time": "2014-01-06 12:42:16",
+        "end_time": "2014-01-06 13:00:01",
+        "location": "Roberts and Sons"
+    },
+    {
+        "cluster_id": 13,
+        "latitude": 36.06346403,
+        "longitude": 24.85097294,
+        "car_id": "4",
+        "start_time": "2014-01-06 13:00:01",
+        "end_time": "2014-01-06 13:29:01",
+        "location": "Roberts and Sons"
+    }
+]
