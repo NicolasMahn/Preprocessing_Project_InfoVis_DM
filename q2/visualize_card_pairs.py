@@ -2,9 +2,10 @@ import numpy as np
 import matplotlib.pyplot as plt
 import matplotlib.colors as mcolors
 import load_data
+from mongo import DB
 
 
-def visualize_cc_pairs():
+def calculate_matrices():
     cc_data = load_data.open_csv_file("../data/raw_data/cc_data.csv")
     loyalty_data = load_data.open_csv_file("../data/raw_data/loyalty_data.csv")
 
@@ -64,16 +65,17 @@ def visualize_cc_pairs():
                         absolute_matrix[i, j] += 1
         total_i = sum(absolute_matrix[i])
         for j in range(len(cc_nums)):
-            relative_l_matrix[i, j] = absolute_matrix[i, j] / total_i
+            relative_l_matrix[i, j] = absolute_matrix[i, j] / total_i *100
 
     for i in range(len(cc_nums)):
         total_i = sum(absolute_matrix[:, i])
         for j in range(len(l_nums)):
-            relative_cc_matrix[j, i] = absolute_matrix[j, i] / total_i
+            relative_cc_matrix[j, i] = absolute_matrix[j, i] / total_i *100
 
-    matrix = absolute_matrix
+    return absolute_matrix, relative_cc_matrix, relative_l_matrix, l_nums, cc_nums
 
 
+def visualize_cc_pairs(matrix, x_axis, y_axis):
     # Create a custom colormap
     cividis = plt.cm.cividis
     newcolors = cividis(np.linspace(1, 0, 256))
@@ -86,10 +88,10 @@ def visualize_cc_pairs():
     im = ax.imshow(matrix, cmap=custom_cmap)
 
     # Add labels
-    ax.set_xticks(np.arange(len(cc_nums)))
-    ax.set_yticks(np.arange(len(l_nums)))
-    ax.set_xticklabels(cc_nums)
-    ax.set_yticklabels(l_nums)
+    ax.set_xticks(np.arange(len(y_axis)))
+    ax.set_yticks(np.arange(len(x_axis)))
+    ax.set_xticklabels(y_axis)
+    ax.set_yticklabels(x_axis)
     plt.setp(ax.get_xticklabels(), rotation=45, ha="right", rotation_mode="anchor")
 
     # Add grid
@@ -107,4 +109,39 @@ def visualize_cc_pairs():
     plt.tight_layout()
     plt.show()
 
-visualize_cc_pairs()
+def save_matrices_in_mongodb(absolute_matrix, relative_cc_matrix, relative_loyalty_matrix, loyalty_nums, cc_nums):
+    mongo = DB("card_matrices")
+
+    # Convert numpy arrays to lists
+    absolute_matrix_list = absolute_matrix.tolist()
+    relative_cc_matrix_list = relative_cc_matrix.tolist()
+    relative_loyalty_matrix_list = relative_loyalty_matrix.tolist()
+
+    mongo.delete_many({})
+    mongo.insert_one_if_not_exists({"matrix": "absolute_matrix", "data": absolute_matrix_list}, "matrix")
+    mongo.insert_one_if_not_exists({"matrix": "relative_cc_matrix", "data": relative_cc_matrix_list}, "matrix")
+    mongo.insert_one_if_not_exists({"matrix": "relative_loyalty_matrix", "data": relative_loyalty_matrix_list}, "matrix")
+    mongo.insert_one_if_not_exists({"y_axis": "loyalty_nums", "data": loyalty_nums}, "y_axis")
+    mongo.insert_one_if_not_exists({"x_axis": "cc_nums", "data": cc_nums}, "x_axis")
+
+    saved_data = mongo.find_all()
+
+    for data in saved_data:
+        print(data)
+        if "matrix" in data.keys():
+            if "relative_cc_matrix" in data["matrix"]:
+                for list in data["data"]:
+                    for item in list:
+                        if item != 0 and item != 1:
+                            print(item)
+
+    mongo.close()
+
+def main():
+    absolute_matrix, relative_cc_matrix, relative_l_matrix, l_nums, cc_nums = calculate_matrices()
+
+    save_matrices_in_mongodb(absolute_matrix, relative_cc_matrix, relative_l_matrix, l_nums, cc_nums)
+    visualize_cc_pairs(relative_cc_matrix, l_nums, cc_nums)
+
+if __name__ == "__main__":
+    main()
