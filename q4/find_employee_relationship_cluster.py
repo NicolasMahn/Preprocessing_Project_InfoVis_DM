@@ -1,6 +1,7 @@
 import json
 import pandas as pd
 import matplotlib.pyplot as plt
+from shapely.geometry import MultiPolygon, Polygon, mapping
 
 # Load the JSON file
 with open('../data/stops_in_location_clusters_employee.json', 'r') as file:
@@ -112,17 +113,17 @@ for cluster in result:
     for entry in cluster['cluster']:
         map_data.append({
             'cluster_id': cluster['cluster_id'],
+            'location': cluster['location'],
             'latitude': entry['latitude'],
             'longitude': entry['longitude'],
             'car_id': entry['car_id'],
+            'LastName': entry['LastName'],
+            'FirstName': entry['FirstName'],
+            'CurrentEmploymentType': entry['CurrentEmploymentType'],
+            'CurrentEmploymentTitle': entry['CurrentEmploymentTitle'],
             'start_time': entry['start_time'],
-            'end_time': entry['end_time'],
-            'location': cluster['location']
+            'end_time': entry['end_time']
         })
-
-# Save map data for frontend
-with open('../data/map_data.json', 'w') as map_file:
-    json.dump(map_data, map_file, indent=4)
 
 # Plotting the clusters
 latitudes = [entry['latitude'] for entry in map_data]
@@ -139,3 +140,29 @@ plt.grid(True)
 plt.show()
 
 print("Daten wurden erfolgreich verarbeitet und für das Frontend exportiert.")
+
+# Load the JSON file
+with open('../data/stops_same_location_time_employee.json', 'r') as file:
+    clusters_data = json.load(file)
+
+# Process the data to create MultiPolygons for each cluster
+result = []
+for cluster in clusters_data:
+    coordinates = [(entry['longitude'], entry['latitude']) for entry in cluster['cluster']]
+    if len(coordinates) > 2:
+        polygon = Polygon(coordinates)
+        multipolygon = MultiPolygon([polygon])
+    else:
+        multipolygon = None  # Not enough points to form a polygon
+
+    cluster_info = {
+        'cluster_id': cluster['cluster_id'],
+        'location': cluster['location'],
+        'employees': cluster['cluster'],
+        'geometry': mapping(multipolygon) if multipolygon else None
+    }
+    result.append(cluster_info)
+
+# Save the result to a new JSON file
+with open('../data/employee_clusters_with_geometry.json', 'w') as outfile:
+    json.dump(result, outfile, indent=4)

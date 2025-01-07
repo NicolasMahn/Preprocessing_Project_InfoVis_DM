@@ -80,18 +80,31 @@ for unique_id in stops_df['unique_cluster_id'].unique():
         (min_lon, min_lat)
     ])
     cluster_polygons.append({
-        'type': 'Feature',
-        'properties': {'id': int(unique_id)},
+        'id': int(unique_id),
+        'name': '',
         'geometry': polygon.__geo_interface__
     })
 
-# Save the polygons to a GeoJSON file
-geojson_data = {
-    'type': 'FeatureCollection',
-    'features': cluster_polygons
-}
-with open('../data/parking_event_cluster_geometry.geojson', 'w') as outfile:
-    json.dump(geojson_data, outfile, indent=4)
+# Save the polygons to a JSON file
+with open('../data/parking_event_cluster_geometry.json', 'w') as outfile:
+    json.dump(cluster_polygons, outfile, indent=4)
+
+# Load the polygons from the JSON file
+with open('../data/parking_event_cluster_geometry.json', 'r') as infile:
+    cluster_polygons = json.load(infile)
+
+# Convert the JSON data to a GeoDataFrame
+features = []
+for feature in cluster_polygons:
+    geom = feature['geometry']
+    properties = feature
+    features.append({
+        'geometry': shape(geom),
+        'id': properties['id'],
+        'name': properties['name']
+    })
+
+cluster_gdf = gpd.GeoDataFrame(features, crs="EPSG:4326")
 
 # Load GeoJSON data for streets
 geojson_path = '../data/raw_data/abila_2.geojson'

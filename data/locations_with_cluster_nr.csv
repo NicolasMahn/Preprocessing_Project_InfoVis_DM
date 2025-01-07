@@ -1,27 +1,27 @@
 Cluster Nummer;location_name
-16;Bean There Done That
-53;Abila Scrapyard
-45;Maximum Iron and Steel
-46;Maximum Iron and Steel
-14;Kronos Mart
+13;Bean There Done That
+;Abila Scrapyard
+;Maximum Iron and Steel
+;Maximum Iron and Steel
+12,8;Kronos Mart
 6;Roberts and Sons
-7;Kronos Capitol
-15;Coffee Shack
+;Kronos Capitol
+;Coffee Shack
 5;Albert's Fine Clothing
-9;General Grocer
+4;General Grocer
 4;Carly's Coffee
-26;Ahaggo Museum
+3;Ahaggo Museum
 0;Jack's Magic Bean
-22;Chostus Hotel
-28;Hallowed Grounds
-49;Carlyle Chemical Inc.
-32;Coffee Chameleon
-47;Abila Hospital
+18,23;Chostus Hotel
+32,29,22;Hallowed Grounds
+36;Carlyle Chemical Inc.
+25;Coffee Chameleon
+34;Abila Hospital
 1;Gastech
-13;Ouzeri Elian
-50;Guy's Gyros
+11;Ouzeri Elian
+27,37;Guy's Gyros
 2;Katerina's Café
 2;Brew've Been Served
-33;Frydo's Autosupply n' More
-44;Abila Airport
-8;Desafio Golf Course
+26;Frydo's Autosupply n' More
+33;Abila Airport
+7;Desafio Golf Course
