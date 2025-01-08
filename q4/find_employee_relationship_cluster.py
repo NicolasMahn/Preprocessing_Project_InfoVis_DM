@@ -2,6 +2,7 @@ import json
 import pandas as pd
 import matplotlib.pyplot as plt
 from shapely.geometry import MultiPolygon, Polygon, mapping
+from mongo import DB
 
 # Load the JSON file
 with open('../data/stops_in_location_clusters_employee.json', 'r') as file:
@@ -139,7 +140,6 @@ plt.title('Cluster Visualization')
 plt.grid(True)
 plt.show()
 
-print("Daten wurden erfolgreich verarbeitet und für das Frontend exportiert.")
 
 # Load the JSON file
 with open('../data/stops_same_location_time_employee.json', 'r') as file:
@@ -166,3 +166,24 @@ for cluster in clusters_data:
 # Save the result to a new JSON file
 with open('../data/employee_clusters_with_geometry.json', 'w') as outfile:
     json.dump(result, outfile, indent=4)
+
+
+mongo = DB("EmployeeCluster")
+
+employee_clusters_json_path = '../data/employee_clusters_with_geometry.json'
+
+try:
+    with open(employee_clusters_json_path, "r", encoding="utf-8") as file:
+        data = json.load(file)  # Lädt die JSON-Datei
+
+        # Überprüfen, ob die Datei ein Objekt oder eine Liste enthält
+        if isinstance(data, list):
+            mongo.insert_many(data)  # Bei einer Liste von Dokumenten
+        else:
+            mongo.insert_one(data)  # Bei einem einzelnen Dokument
+
+        print("Daten erfolgreich in die MongoDB eingefügt!")
+except Exception as e:
+    print(f"Fehler beim Importieren der Daten: {e}")
+
+print(mongo.find_all())

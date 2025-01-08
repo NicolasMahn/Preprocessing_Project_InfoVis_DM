@@ -1,28 +1,22 @@
+from mongo import DB
 import json
 
-# Datei laden
-file_path = '../data/location_parking_cluster_matched.json'
-with open(file_path, 'r') as f:
-    data = json.load(f)
+mongo = DB("LocationCluster")
 
-# Bereinigung der Daten
-for cluster in data:
-    geometry = cluster.get('geometry')
-    if geometry:
-        if 'coordinates' in geometry:
-            if not isinstance(geometry['coordinates'], list):
-                print(f"Ungültige Geometrie: {geometry}")
-                cluster['geometry'] = None  # Entferne die fehlerhafte Geometrie
-            elif geometry['type'] == 'Polygon' and not isinstance(geometry['coordinates'][0], list):
-                print(f"Korrigiere Polygon: {geometry}")
-                cluster['geometry']['coordinates'] = [[geometry['coordinates']]]
-            elif geometry['type'] == 'MultiPolygon' and not isinstance(geometry['coordinates'][0][0], list):
-                print(f"Korrigiere MultiPolygon: {geometry}")
-                cluster['geometry']['coordinates'] = [[geometry['coordinates']]]
+location_clusters_json_path = '../data/location_parking_cluster_matched_cleaned.json'
 
-# Datei speichern
-cleaned_file_path = '../data/location_parking_cluster_matched_cleaned.json'
-with open(cleaned_file_path, 'w') as f:
-    json.dump(data, f, indent=4)
+try:
+    with open(location_clusters_json_path, "r", encoding="utf-8") as file:
+        data = json.load(file)  # Lädt die JSON-Datei
 
-print(f"Bereinigte Datei gespeichert unter: {cleaned_file_path}")
+        # Überprüfen, ob die Datei ein Objekt oder eine Liste enthält
+        if isinstance(data, list):
+            mongo.insert_many(data)  # Bei einer Liste von Dokumenten
+        else:
+            mongo.insert_one(data)  # Bei einem einzelnen Dokument
+
+        print("Daten erfolgreich in die MongoDB eingefügt!")
+except Exception as e:
+    print(f"Fehler beim Importieren der Daten: {e}")
+
+print(mongo.find_all())
