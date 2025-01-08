@@ -9,7 +9,7 @@ from sklearn.cluster import DBSCAN
 from matplotlib.colors import ListedColormap
 import geopandas as gpd
 import matplotlib.patches as mpatches
-import matplotlib.colors as mcolorsa
+import matplotlib.colors as mcolors
 from shapely.geometry import shape, LineString, Polygon, MultiPolygon, Point
 from shapely.geometry.polygon import Polygon as ShapelyPolygon
 from shapely.ops import unary_union
