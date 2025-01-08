@@ -1,0 +1,67 @@
+[
+    {
+        "cluster_id": 1,
+        "latitude": 36.0766665875,
+        "longitude": 24.8575912875
+    },
+    {
+        "cluster_id": 2,
+        "latitude": 36.0817699475,
+        "longitude": 24.8509276325
+    },
+    {
+        "cluster_id": 3,
+        "latitude": 36.054073494166666,
+        "longitude": 24.901215221666664
+    },
+    {
+        "cluster_id": 4,
+        "latitude": 36.059767182499996,
+        "longitude": 24.8580072675
+    },
+    {
+        "cluster_id": 5,
+        "latitude": 36.070727495,
+        "longitude": 24.89525656
+    },
+    {
+        "cluster_id": 6,
+        "latitude": 36.05467836666667,
+        "longitude": 24.88982593
+    },
+    {
+        "cluster_id": 7,
+        "latitude": 36.075262455,
+        "longitude": 24.856318035
+    },
+    {
+        "cluster_id": 8,
+        "latitude": 36.08957082,
+        "longitude": 24.860688205
+    },
+    {
+        "cluster_id": 9,
+        "latitude": 36.060367425,
+        "longitude": 24.9056109775
+    },
+    {
+        "cluster_id": 10,
+        "latitude": 36.058466117500004,
+        "longitude": 24.901012065
+    },
+    {
+        "cluster_id": 11,
+        "latitude": 36.063666295,
+        "longitude": 24.88593997166667
+    },
+    {
+        "cluster_id": 12,
+        "latitude": 36.051947585,
+        "longitude": 24.87079307
+    },
+    {
+        "cluster_id": 13,
+        "latitude": 36.063443408,
+        "longitude": 24.851007936000002
+    }
+]

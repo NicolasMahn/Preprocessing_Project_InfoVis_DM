@@ -110,7 +110,7 @@ for geom, name in zip(gdf.geometry, gdf.Name):
         x, y = geom.xy
         plt.plot(x, y, color=color, linewidth=1)
 plt.axis('off')
-plt.savefig('./plots/abila_map.png')
+plt.savefig('./plots/abila_map.png', bbox_inches='tight')
 plt.close()
 
 # Plot 2: Abila map with location clusters
@@ -147,7 +147,7 @@ for i, name in enumerate(unique_names):
             plt.fill(x, y, color=color, alpha=0.75)
     legend_patches.append(mpatches.Patch(color=color, label=name))
 plt.axis('off')
-plt.savefig('./plots/abila_map_location_cluster.png')
+plt.savefig('./plots/abila_map_location_cluster.png', bbox_inches='tight')
 plt.close()
 
 # Plot 3: Abila map with location clusters and employee clusters
@@ -188,12 +188,12 @@ for idx, row in employee_gdf.iterrows():
         plt.text(geom.x, geom.y, str(row['id']), fontsize=10, ha='center', va='center', color='white', zorder=6)  # ID inside the point
 plt.scatter(longitudes, latitudes, c='blue', s=50, alpha=0.7, edgecolors='k', zorder=4)
 plt.axis('off')
-plt.savefig('./plots/abila_map_location_employee_cluster.png')
+plt.savefig('./plots/abila_map_location_employee_cluster.png', bbox_inches='tight')
 plt.close()
 
 # Plot 4: Legend for location clusters
 plt.figure(figsize=(6, 4))
-plt.legend(handles=legend_patches, loc='center')
+plt.legend(handles=legend_patches, loc='center', bbox_to_anchor=(0.5, 0.5), frameon=False)
 plt.axis('off')
-plt.savefig('./plots/location_clusters_legend.png')
+plt.savefig('./plots/location_clusters_legend.png', bbox_inches='tight')
 plt.close()
